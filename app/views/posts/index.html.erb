@@ -1,0 +1,18 @@
+<h1>Blog</h1>
+
+<div class='row'>
+  <div class='small-8 columns'>
+    <%= render @posts %>
+  </div>
+
+  <div class='small-4 columns'>
+    <h2>Sidebar</h2>
+    <% bottoni = "" %>
+    <% 12.times { bottoni << link_to("Bottoni!", root_path, class: 'medium radius success button') } %>
+    <%= bottoni.html_safe %>
+  </div>
+</div>
+
+<div class='row'>
+  <%= link_to 'Nuovo post', new_post_path %>
+</div>

@@ -1,0 +1,24 @@
+<%= form_for(@post, auto_labels: false) do |f| %>
+
+  <div class="row">
+    <div class="small-12 columns">
+      <%= f.label :titolo %>
+      <%= f.text_field :title %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="small-8 columns">
+      <%= f.label :testo %>
+      <%= f.text_area :body %>
+    </div>
+    <div class="small-4 columns">
+      <%= f.label 'Data di pubblicazione' %>
+      <%= f.date_select :published_at %>
+    </div>
+  </div>
+
+  
+  <div class="actions">
+    <%= f.submit 'Modifica post' %>
+  </div>
+<% end %>
