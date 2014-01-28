@@ -1,10 +1,10 @@
 <hr>
 <div class='row'>
 
-	<div class='small-8 small-offset-1 columns'>
+	<div class='small-7 small-offset-1 columns'>
 		<h2><%= link_to post.title.html_safe, post_path(post) %></h2>
 	</div>
-	<div class='small-3 columns'>
+	<div class='small-3 small-offset-1 columns'>
 		pubblicato il <%= post.publish_date %>
 	</div>
 	
@@ -13,11 +13,11 @@
 	</div>
 	
 	<% if signed_in? [:admin, :super_user] %>
-	<div class='small-6 columns'>
+	<div class='small-5 small-offset-1 columns'>
 		<hr>
 		<%= link_to 'Elimina', post_path(post), method: :delete, data: { confirm: 'Sei sicuro?' } %>
 	</div>
-	<div class='small-6 columns'>
+	<div class='small-5 columns'>
 		<hr>
 		<%= link_to 'Modifica', edit_post_path(post) %>
 	</div>

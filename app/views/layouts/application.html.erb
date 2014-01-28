@@ -9,9 +9,12 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
+
+    <%= javascript_include_tag "tinymce" %>
+    <%= tinymce_assets %>
   </head>
 
-  <body data-no-turbolinks>
+  <body data-no-turbolink>
 
     <%= render 'layouts/header' %>
     

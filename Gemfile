@@ -33,6 +33,8 @@ gem 'foundation_rails_helper', git: 'git://github.com/dropletzz/foundation_rails
 
 gem 'devise'
 
+gem 'tinymce-rails'
+
 gem 'rails_12factor'
 
 group :doc do

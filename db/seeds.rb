@@ -24,6 +24,6 @@ SuperUser.create(email: 'giocaniato@gmail.com', username: 'gio', password: 'koal
 SuperUser.create(email: 'pes@ci.com', username: 'pesci', password: 'koala666')
 SuperUser.create(email: 'phi@ls.com', username: 'phil!', password: 'koala666')
 
-create_posts ["Moriremo tutti", "Oggi ho fatto la cacca", "Molto interessante"], 100
+create_posts ["Moriremo tutti", "Oggi ho fatto la cacca", "Molto interessante "], 100
 
 

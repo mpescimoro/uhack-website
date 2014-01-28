@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def authenticate_any!(roles=[])
-  	redirect_to root_path, alert: "Non hai i permessi per farlo" unless roles.inject(false) do |logged, role|
+  	redirect_to root_path, alert: "Spiacente, devi essere loggato per farlo" unless roles.inject(false) do |logged, role|
   		logged ||= eval "#{role}_signed_in?"
   	end
   end

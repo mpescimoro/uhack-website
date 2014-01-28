@@ -9,7 +9,7 @@
   <div class="row">
     <div class="small-8 columns">
       <%= f.label :testo %>
-      <%= f.text_area :body %>
+      <%= f.text_area :body, class: "tinymce" %>
     </div>
     <div class="small-4 columns">
       <%= f.label 'Data di pubblicazione' %>
@@ -19,6 +19,8 @@
 
   
   <div class="actions">
-    <%= f.submit 'Modifica post' %>
+    <%= f.submit @submit_text %>
   </div>
 <% end %>
+
+<%= tinymce unless @plain_text %>

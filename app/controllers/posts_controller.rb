@@ -16,10 +16,14 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    @plain_text = params[:plain_text]
+    @submit_text = "Crea post"
   end
 
   # GET /posts/1/edit
   def edit
+    @plain_text = params[:plain_text]
+    @submit_text = "Modifica post"
   end
 
   # POST /posts
@@ -76,6 +80,6 @@ class PostsController < ApplicationController
     end
 
     def authenticate!
-      authenticate_any! [:admin, :super_user]
+      redirect_to new_super_user_session_path unless signed_in? [:admin, :super_user]
     end
 end
