@@ -7,8 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 def create_posts(titles, times)
 	if titles.respond_to? :each
-		titles.each_with_index do |i, title|
-			Post.create(title: title, body: title * times, published_at: Time.now - i.week)
+		titles.each_with_index do |title, i|
+			Post.create(title: title, body: title * times, published_at: Time.now - i.weeks)
 		end
 	else
 		Post.create(title: title, body: title * times, published_at: Time.now)
