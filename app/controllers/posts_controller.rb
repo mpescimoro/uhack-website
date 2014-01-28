@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.where("published_at <= ?", Time.now)
+    @posts = Post.where("published_at <= ?", Time.now).order(published_at: :desc)
   end
 
   # GET /posts/1
@@ -80,6 +80,6 @@ class PostsController < ApplicationController
     end
 
     def authenticate!
-      redirect_to new_super_user_session_path unless signed_in? [:admin, :super_user]
+      redirect_to new_super_user_session_path, alert: "Devi essere loggato per poter postare" unless signed_in? [:admin, :super_user]
     end
 end
