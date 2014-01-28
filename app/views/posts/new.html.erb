@@ -1,6 +1,7 @@
 <h1>Nuovo post</h1>
 
 <%= render 'form' %>
+
 <% if @plain_text %>
 	<%= link_to 'Modalità normale', new_post_path(@post), class: 'button small radius' %>
 <% else %>

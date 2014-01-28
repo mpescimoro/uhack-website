@@ -7,8 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 def create_posts(titles, times)
 	if titles.respond_to? :each
-		titles.each do |title|
-			Post.create(title: title, body: title * times, published_at: Time.now)
+		titles.each_with_index do |i, title|
+			Post.create(title: title, body: title * times, published_at: Time.now - i.week)
 		end
 	else
 		Post.create(title: title, body: title * times, published_at: Time.now)
@@ -23,7 +23,8 @@ Admin.create(email: 'adm@uhack.com', password: 'koala666')
 SuperUser.create(email: 'giocaniato@gmail.com', username: 'gio', password: 'koala666')
 SuperUser.create(email: 'pes@ci.com', username: 'pesci', password: 'koala666')
 SuperUser.create(email: 'phi@ls.com', username: 'phil!', password: 'koala666')
+SuperUser.create(email: 'gue@st.com', username: 'guest', password: 'koala666')
 
-create_posts ["Moriremo tutti", "Oggi ho fatto la cacca", "Molto interessante "], 100
+create_posts ["Moriremo tutti", "Oggi ho fatto la cacca", "Molto interessante ", "Hack Hack Hack"], 100
 
 
