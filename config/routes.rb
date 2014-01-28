@@ -5,7 +5,15 @@ Uhack::Application.routes.draw do
 
   get "pages/index"
 
-  root 'pages#index'
+  as :admin do
+    get "/admin" => "devise/sessions#new"
+  end
+
+  as :super_user do
+    get "/user" => "devise/sessions#new"
+  end
+
+  root "pages#index"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
