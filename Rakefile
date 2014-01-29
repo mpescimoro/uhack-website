@@ -3,7 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-require 'rubygems'
-require 'texticle/tasks'
-
 Uhack::Application.load_tasks
