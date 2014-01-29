@@ -1,6 +1,10 @@
 Uhack::Application.routes.draw do
+  resources :tags
+
   devise_for :super_users
   devise_for :admins
+
+  get '/posts/tag/:tag_id', to: 'posts#index', as: 'posts_with_tag'
   resources :posts
 
   get "pages/index"

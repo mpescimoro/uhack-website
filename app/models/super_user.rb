@@ -6,6 +6,7 @@ class SuperUser < ActiveRecord::Base
 
   validates :username, uniqueness: { case_sentitive: false }
 
+  has_many :posts, as: :creator
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup

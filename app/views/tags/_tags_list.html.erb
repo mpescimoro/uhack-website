@@ -1,0 +1,3 @@
+<% Tag.all.each do |tag| %>
+	<%= tags_list_element tag, tag.id==@selected_tag_id %><br>
+<% end %>

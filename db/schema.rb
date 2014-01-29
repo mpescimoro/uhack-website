@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140128082143) do
+ActiveRecord::Schema.define(version: 20140128205737) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 20140128082143) do
     t.date     "published_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "creator_id"
+    t.string   "creator_type"
   end
 
   create_table "super_users", force: true do |t|
@@ -57,5 +59,18 @@ ActiveRecord::Schema.define(version: 20140128082143) do
 
   add_index "super_users", ["email"], name: "index_super_users_on_email", unique: true
   add_index "super_users", ["reset_password_token"], name: "index_super_users_on_reset_password_token", unique: true
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tagships", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "post_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

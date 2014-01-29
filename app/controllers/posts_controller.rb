@@ -6,6 +6,8 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.where("published_at <= ?", Time.now).order(published_at: :desc)
+    @selected_tag_id = params[:tag_id].to_i
+    @posts = @posts.joins(:tagships).where(tagships: {tag_id: @selected_tag_id}) if params[:tag_id]
   end
 
   # GET /posts/1
@@ -32,6 +34,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     
     @post.published_at = Time.now if @post.published_at < Time.now
+    @post.add_or_create_tags(tag_names)
 
     respond_to do |format|
       if @post.save
@@ -49,6 +52,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
+        @post.update_tags(tag_names)
         format.html { redirect_to @post, notice: 'Post was successfully updated.' }
         format.json { head :no_content }
       else
@@ -82,4 +86,9 @@ class PostsController < ApplicationController
     def authenticate!
       redirect_to new_super_user_session_path, alert: "Devi essere loggato per poter postare" unless signed_in? [:admin, :super_user]
     end
+
+    def tag_names
+      params[:tag_names] ? params[:tag_names].split(/\s+/).uniq : []
+    end
+
 end

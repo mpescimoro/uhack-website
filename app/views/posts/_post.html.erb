@@ -1,23 +1,27 @@
 <hr>
 <div class='row'>
 
-	<div class='small-7 small-offset-1 columns'>
+	<div class='small-8 columns'>
 		<h2><%= link_to post.title.html_safe, post_path(post) %></h2>
 	</div>
-	<div class='small-3 small-offset-1 columns'>
+	<div class='small-4 columns'>
 		pubblicato il <%= post.publish_date %>
 	</div>
 	
-	<div class='small-11 small-offset-1 columns'>
+	<div class='small-12 columns'>
 		<%= post.body.html_safe %>
+	</div>
+
+	<div class='small-12 columns'>
+		<b>Tagged:</b> <%= tags_for post %>
 	</div>
 	
 	<% if signed_in? [:admin, :super_user] %>
-	<div class='small-5 small-offset-1 columns'>
+	<div class='small-6 columns'>
 		<hr>
 		<%= link_to 'Elimina', post_path(post), method: :delete, data: { confirm: 'Sei sicuro?' } %>
 	</div>
-	<div class='small-5 columns'>
+	<div class='small-6 columns'>
 		<hr>
 		<%= link_to 'Modifica', edit_post_path(post) %>
 	</div>
