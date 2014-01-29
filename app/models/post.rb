@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
 	has_many :tagships, dependent: :destroy
 	has_many :tags, through: :tagships
 
+
 	def publish_date
 		published_at.strftime('%d/%m/%Y')
 	end

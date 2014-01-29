@@ -5,6 +5,7 @@ Uhack::Application.routes.draw do
   devise_for :admins
 
   get '/posts/tag/:tag_id', to: 'posts#index', as: 'posts_with_tag'
+  get '/posts/search', to: 'posts#search', as: 'search_posts'
   resources :posts
 
   get "pages/index"

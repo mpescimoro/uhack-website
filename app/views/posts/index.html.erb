@@ -1,10 +1,10 @@
 
 <div class='row'>
-  <div class='small-8 columns'>
-    <h1>Blog</h1>
-  </div>
-  <div class='small-4 columns'>
-    <%= link_to 'Nuovo post', new_post_path, class: 'medium radius success button' %>
+  <div class='small-12 columns'>
+    <h1>
+      Blog 
+      <%= link_to 'Nuovo post', new_post_path, class: 'medium radius success button' %>
+    </h1>
   </div>
 </div>
 
@@ -14,7 +14,10 @@
   </div>
 
   <div class='small-4 columns'>
-    <h2>Sidebar</h2>
+    <%= form_tag(search_posts_path, method: :get) do %>
+      <%= text_field_tag :search %>
+      <%= submit_tag 'Cerca negli articoli', class: 'button small radius' %>
+    <% end %>
     <%= render '/tags/tags_list' %>
   </div>
 </div>

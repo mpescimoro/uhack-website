@@ -10,6 +10,11 @@ class PostsController < ApplicationController
     @posts = @posts.joins(:tagships).where(tagships: {tag_id: @selected_tag_id}) if params[:tag_id]
   end
 
+  def search
+    @posts = Post.basic_search(params[:search])
+    render :index
+  end
+
   # GET /posts/1
   # GET /posts/1.json
   def show

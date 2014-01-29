@@ -1,9 +1,10 @@
 development:
-  development:
-  adapter: sqlite3
-  database: db/development.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  database: amicibici_development
   pool: 5
-  timeout: 5000
+  username:
+  password:
 
 test:
   adapter: postgresql
