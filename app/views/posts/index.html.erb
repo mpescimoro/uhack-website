@@ -4,19 +4,16 @@
   <div class='small-7 small-offset-1 columns'>
 
     <div class='row'>
-      <div class='small-2 columns'>
-        <h1>Blog</h1>
+      <div class='small-12 columns'>
+        <% if params[:search] %>
+          <h4><i>
+            Hai cercato '<%= params[:search] %>', 
+            la ricerca ha prodotto <%= @posts.count %> risultati
+          </i></h4>
+        <% else %>
+          <h1>µBlog</h1>
+        <% end %>
       </div>
-      <%= form_tag(search_posts_path, method: :get) do %>
-        <div class='small-5 small-offset-2 columns'>
-          <br>
-          <%= text_field_tag :search %>
-        </div>
-        <div class='small-3 columns'>
-          <br>
-          <%= submit_tag 'Cerca', class: 'tiny radius button' %>
-        </div>
-      <% end %>
     </div>
 
     <%= render @posts %>

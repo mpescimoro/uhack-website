@@ -17,4 +17,12 @@ module ApplicationHelper
 		end
 	end
 
+	def posts_controller?
+		params[:controller] == 'posts'
+	end
+
+	def content_tag_if(tag, condition, opt={}, &block)
+		content_tag(tag, opt, &block) if condition
+	end 
+
 end
