@@ -1,5 +1,4 @@
-<hr>
-<div class='row'>
+<div class='row post_panel radius'>
 
 	<div class='small-8 columns'>
 		<h2><%= link_to post.title.html_safe, post_path(post) %></h2>
@@ -7,7 +6,7 @@
 	<div class='small-4 columns'>
 		pubblicato il <%= post.publish_date %>
 	</div>
-	
+	<hr>
 	<div class='small-12 columns'>
 		<%= post.body.html_safe %>
 	</div>
@@ -28,3 +27,5 @@
 	<% end %>
 
 </div>
+
+<br>

@@ -1,28 +1,33 @@
 
-<div class='row'>
-  <div class='small-12 columns'>
-    <h1>
-      Blog 
-      <%= link_to 'Nuovo post', new_post_path, class: 'medium radius success button' %>
-    </h1>
-  </div>
-</div>
 
-<div class='row'>
-  <div class='small-8 columns'>
+<!div class='row'>
+  <div class='small-7 small-offset-1 columns'>
+
+    <div class='row'>
+      <div class='small-2 columns'>
+        <h1>Blog</h1>
+      </div>
+      <%= form_tag(search_posts_path, method: :get) do %>
+        <div class='small-5 small-offset-2 columns'>
+          <br>
+          <%= text_field_tag :search %>
+        </div>
+        <div class='small-3 columns'>
+          <br>
+          <%= submit_tag 'Cerca', class: 'tiny radius button' %>
+        </div>
+      <% end %>
+    </div>
+
     <%= render @posts %>
   </div>
 
-  <div class='small-4 columns'>
+  <div class='small-3 small-offset-1 columns'>
     <div class='row collapse'>
-      <%= form_tag(search_posts_path, method: :get) do %>
-        <div class='large-8 columns'>
-          <%= text_field_tag :search %>
-        </div>
-        <div class='large-4 columns'>
-          <%= submit_tag 'Cerca', class: 'tiny button postfix' %>
-        </div>
-      <% end %>
+      <div class='small-12 columns'>
+        <br>
+        <%= link_to 'Nuovo post', new_post_path, class: 'radius button' %>
+      </div>
     </div>
     <hr>
     <div class='row'>
@@ -32,6 +37,4 @@
       </div>
     </div>
   </div>
-</div>
-
-<hr>
+<!/div>

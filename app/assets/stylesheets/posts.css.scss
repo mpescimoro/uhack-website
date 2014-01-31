@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import "foundation/components/labels";
+@import "foundation/components/panels";
 
 .tag {
 	color: #fff;
@@ -27,4 +28,26 @@
 	-moz-box-shadow: 3px 3px 2px #000;
 	-webkit-box-shadow: 3px 3px 2px #000;
 	box-shadow: 3px 3px 2px #000;
+}
+
+
+.post_panel {
+	@include panel(
+	$bg: #333333
+	);
+
+	@include radius(
+	$radius: 2em
+	);
+
+	$text-color: #fff;
+	color: $text-color;
+	h2 a {
+		color: $text-color;
+	}
+
+	hr {
+		border-top: dotted 4px;
+	}
+
 }
