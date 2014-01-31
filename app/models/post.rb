@@ -1,5 +1,7 @@
 class Post < ActiveRecord::Base
 
+  before_destroy :destroy_orphan_tags
+
 	belongs_to :creator, polymorphic: true
 	has_many :tagships, dependent: :destroy
 	has_many :tags, through: :tagships
@@ -32,6 +34,13 @@ class Post < ActiveRecord::Base
 
   def tagstring
   	self.tags.map(&:name).join(" ")
+  end
+
+  private
+  def destroy_orphan_tags
+    self.tags.each do |tag|
+      tag.destroy if tag.posts.count == 1
+    end
   end
 	
 end
