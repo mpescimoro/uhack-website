@@ -1,15 +1,19 @@
 module PostsHelper
 
 	def tags_for(post)
-		post.tags.inject("") do |list, tag|
-			list << "##{tag.name} "
-		end
+		post.tags.inject("") do |tags, tag|
+			tags << taggify(tag)
+		end.html_safe
 	end
 
-	def tags_list_element(tag, selected)
-		name = selected ? content_tag(:b, tag.name) : tag.name
+	def taggify(tag)
+		link_to tag.name, posts_with_tag_path(tag), class: 'tag'
+	end
+
+	def tag_list_elem(tag, selected=false)
+		_class = selected ? ' selected_tag' : ' tag'
 		path = selected ? posts_path : posts_with_tag_path(tag)
-		link_to "##{name} (#{tag.posts.count})".html_safe, path
+		link_to "#{tag.name} (#{tag.posts.count})".html_safe, path, class: _class
 	end
 
 end

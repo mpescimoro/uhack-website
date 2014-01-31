@@ -9,3 +9,4 @@ plugins:
   - fullscreen
   - link
   - image
+  - textcolor
