@@ -31,7 +31,7 @@
 }
 
 
-.post_panel {
+.post_panel_odd {
 	@include panel(
 	$bg: #333333
 	);
@@ -49,5 +49,24 @@
 	hr {
 		border-top: dotted 4px;
 	}
+}
 
+.post_panel_even {
+	@include panel(
+	$bg: #158DB8
+	);
+
+	@include radius(
+	$radius: 2em
+	);
+
+	$text-color: #fff;
+	color: $text-color;
+	h2 a {
+		color: $text-color;
+	}
+
+	hr {
+		border-top: dotted 4px;
+	}
 }

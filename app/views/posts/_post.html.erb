@@ -1,4 +1,4 @@
-<div class='row post_panel radius'>
+<div class='row <%= 'post_panel_' + cycle('odd', 'even') %>'>
 
 	<div class='small-8 columns'>
 		<h2><%= link_to post.title.html_safe, post_path(post) %></h2>
