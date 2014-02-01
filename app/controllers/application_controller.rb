@@ -4,12 +4,19 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def authenticate_any!(roles=[])
-  	redirect_to root_path, alert: "Spiacente, devi essere loggato per farlo" unless roles.inject(false) do |logged, role|
+    msg = "Spiacente, devi essere loggato per farlo"
+  	redirect_to root_path, alert: msg unless roles.inject(false) do |logged, role|
   		logged ||= eval "#{role}_signed_in?"
   	end
   end
 
   protected
+  def link_uris!(string)
+    string.gsub! URI.regexp do |match|
+      "<a href='#{match}'>#{match}</a>"
+    end
+  end
+
   def devise_parameter_sanitizer
   	if resource_class == SuperUser
   		SuperUser::ParameterSanitizer.new(SuperUser, :user, params)

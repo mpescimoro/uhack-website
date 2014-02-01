@@ -11,7 +11,7 @@ module Taggable
     end
   end
 
-  def update_tags(tag_names) #could/should be more efficient than that
+  def update_tags(tag_names) #could be smarter and avoid destroying everything
   	tagships = self.tagships
   	self.tagships.delete_all
   	self.add_or_create_tags(tag_names)
@@ -24,6 +24,5 @@ module Taggable
   def tagstring
   	self.tags.map(&:name).join(" ")
   end
-
 
 end
