@@ -274,9 +274,10 @@ ALTER SEQUENCE tags_id_seq OWNED BY tags.id;
 CREATE TABLE tagships (
     id integer NOT NULL,
     tag_id integer,
-    post_id integer,
     created_at timestamp without time zone,
-    updated_at timestamp without time zone
+    updated_at timestamp without time zone,
+    taggable_id integer,
+    taggable_type character varying(255)
 );
 
 
@@ -484,3 +485,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140128205737');
 INSERT INTO schema_migrations (version) VALUES ('20140129183546');
 
 INSERT INTO schema_migrations (version) VALUES ('20140131223815');
+
+INSERT INTO schema_migrations (version) VALUES ('20140201110704');

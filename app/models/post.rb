@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   before_destroy :destroy_orphan_tags
 
 	belongs_to :creator, polymorphic: true
-	has_many :tagships, dependent: :destroy
+	has_many :tagships,  as: :taggable, dependent: :destroy
 	has_many :tags, through: :tagships
 
 
@@ -14,11 +14,11 @@ class Post < ActiveRecord::Base
 	def add_or_create_tags(tag_names)
     tag_names.each do |name|
       if tag = Tag.where(name: name).first
-        Tagship.create(tag_id: tag.id, post_id: self.id)
+        self.tagships.build(tag_id: tag.id)
       else
         self.tags.build(name: name)
-        self.save
       end
+      self.save
     end
   end
 
