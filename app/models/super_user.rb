@@ -4,9 +4,9 @@ class SuperUser < ActiveRecord::Base
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :username, uniqueness: { case_sentitive: false }
-
   has_many :posts, as: :creator
+
+  validates :username, uniqueness: { case_sentitive: false }
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup

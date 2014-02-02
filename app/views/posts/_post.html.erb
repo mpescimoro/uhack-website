@@ -4,7 +4,13 @@
 		<h2><%= link_to post.title.html_safe, post_path(post) %></h2>
 	</div>
 	<div class='small-4 columns'>
-		pubblicato il <%= post.publish_date %>
+		<i>
+		<% if post.published? %>
+			pubblicato il <%= post.publish_date if  post.published? %>
+		<% else %>
+			non pubblicato
+		<% end %>
+		</i>
 	</div>
 	<hr>
 	<div class='small-12 columns'>
@@ -12,17 +18,22 @@
 	</div>
 
 	<div class='small-12 columns'>
-		<b>Tagged:</b> <%= tags_for post %>
+		<b>Tagged:</b> <%= tags_for post %></br>
 	</div>
 	
 	<% if signed_in? [:admin, :super_user] %>
-	<div class='small-6 columns'>
-		<hr>
-		<%= link_to 'Elimina', post_path(post), method: :delete, data: { confirm: 'Sei sicuro?' } %>
+	<div class='small-4 columns'>
+		<%= link_to 'Modifica', edit_post_path(post), class: 'bttn' %>
 	</div>
-	<div class='small-6 columns'>
-		<hr>
-		<%= link_to 'Modifica', edit_post_path(post) %>
+	<div class='small-4 columns'>
+		<% if post.published? %>
+			<%= link_to 'Spubblica', unpublish_post_path(post), class: 'bttn', data: { confirm: 'Sicuro di volerlo spubblicare?'} if post.published? %>
+		<% else %>
+			<%= link_to 'Pubblica', publish_post_path(post), class: 'bttn', data: { confirm: 'Sicuro di volerlo pubblicare?' } %>
+		<% end %>
+	</div>
+	<div class='small-4 columns'>
+		<%= link_to 'Elimina', post_path(post), method: :delete, data: { confirm: 'Sei sicuro?' }, class: 'bttn' %>
 	</div>
 	<% end %>
 

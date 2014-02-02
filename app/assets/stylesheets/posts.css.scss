@@ -4,11 +4,23 @@
 
 @import "foundation/components/labels";
 @import "foundation/components/panels";
+@import "foundation/components/buttons";
 
-.tag {
-	color: #fff;
+//$post-main-1: #333333;
+//$post-main-2: #158DB8;
+//$tag-color: #F5F57E;
+//$text-color: #FFF;
+
+
+$post-main-1: #ABE9F0;
+$post-main-2: #CECECE;
+$tag-color: #F5F57E;
+$text-color: #000;
+$label-font-color: #000;
+
+@mixin tag($bg-color) {
 	@include label(
-		$bg: #F5F57E,
+		$bg: $bg-color,
 		$radius:1000px
 	);
 
@@ -16,31 +28,27 @@
 	margin-right: 3px;
 }
 
-.selected_tag {
-	color: #fff;
-	@include label(
-		$bg: #F5F57E,
-		$radius:1000px
-	);
+.tag {
+	@include tag($tag-color);
+}
 
-	margin-bottom: 5px;
-	margin-right: 3px;
+.selected_tag {
+	@include tag($tag-color);
+
 	-moz-box-shadow: 3px 3px 2px #000;
 	-webkit-box-shadow: 3px 3px 2px #000;
 	box-shadow: 3px 3px 2px #000;
 }
 
-
-.post_panel_odd {
+@mixin post_panel($bg-color, $button-color) {
 	@include panel(
-	$bg: #333333
+	$bg: $bg-color
 	);
 
 	@include radius(
 	$radius: 2em
 	);
 
-	$text-color: #fff;
 	color: $text-color;
 	h2 a {
 		color: $text-color;
@@ -48,25 +56,27 @@
 
 	hr {
 		border-top: dotted 4px;
+	}
+
+	.bttn {
+		@include button($bg: $button-color,
+		$padding: 0.5rem,
+		$radius: 3px
+		);
 	}
 }
 
+
+.post_panel_odd {
+	@include post_panel(
+		$bg-color: $post-main-1,
+		$button-color: $post-main-2
+	);
+}
+
 .post_panel_even {
-	@include panel(
-	$bg: #158DB8
+	@include post_panel(
+		$bg-color: $post-main-2,
+		$button-color: $post-main-1
 	);
-
-	@include radius(
-	$radius: 2em
-	);
-
-	$text-color: #fff;
-	color: $text-color;
-	h2 a {
-		color: $text-color;
-	}
-
-	hr {
-		border-top: dotted 4px;
-	}
 }

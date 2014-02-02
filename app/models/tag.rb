@@ -5,4 +5,10 @@ class Tag < ActiveRecord::Base
 
 	validates :name, uniqueness: true
 
+	
+
+  def published_posts_count
+    self.posts.where.not(published_at: nil).count
+  end
+
 end

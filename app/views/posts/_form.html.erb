@@ -12,8 +12,6 @@
       <%= f.text_area :body, class: "tinymce", rows: 25 %>
     </div>
     <div class="small-4 columns">
-      <%= f.label 'Data di pubblicazione' %>
-      <%= f.date_select :published_at %>
       <%= label_tag 'Tags' %>
       <%= text_area_tag :tag_names, @post.tagstring %>
     </div>

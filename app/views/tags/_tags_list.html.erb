@@ -1,3 +1,5 @@
 <% Tag.all.each do |tag| %>
-	<%= tag_list_elem tag, tag.id==@selected_tag_id %><br>
+	<% if tag.published_posts_count > 0 %>
+		<%= tag_list_elem tag, tag.id==@selected_tag_id %><br>
+	<% end %>
 <% end %>

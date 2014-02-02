@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :publish, :unpublish]
   before_action :authenticate!, except: [:show, :index, :search]
 
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.where("published_at <= ?", Time.now).order(published_at: :desc)
+    @unpublished_posts = Post.where(published_at: nil) if super_user_signed_in?
+    @posts = Post.where.not(published_at: nil).order(published_at: :desc)
     @selected_tag_id = params[:tag_id].to_i
     @posts = @posts.joins(:tagships).where(tagships: {tag_id: @selected_tag_id}) if params[:tag_id]
   end
@@ -37,17 +38,39 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-    
-    @post.published_at = Time.now if @post.published_at < Time.now
     @post.add_or_create_tags(tag_names)
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
+        format.html { redirect_to @post, notice: 'Il post è stato creato' }
         format.json { render action: 'show', status: :created, location: @post }
       else
         format.html { render action: 'new' }
         format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def publish
+    @post.published_at = Time.now
+
+    respond_to do |format|
+      if @post.save
+        format.html { redirect_to posts_path, notice: 'Il post è stato pubblicato' }
+      else
+        format.html { render action: 'index', alert: 'Qualcosa è andato storto' }
+      end
+    end
+  end
+
+  def unpublish
+    @post.published_at = nil
+
+    respond_to do |format|
+      if @post.save
+        format.html { redirect_to posts_path, notice: 'Il post è stato spubblicato' }
+      else
+        format.html { render action: 'index', alert: 'Qualcosa è andato storto' }
       end
     end
   end
@@ -85,7 +108,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, :published_at)
+      params.require(:post).permit(:title, :body)
     end
 
     def authenticate!

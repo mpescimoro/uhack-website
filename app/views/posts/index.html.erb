@@ -15,7 +15,7 @@
         <% end %>
       </div>
     </div>
-
+    <%= render @unpublished_posts if super_user_signed_in? %>
     <%= render @posts %>
   </div>
 

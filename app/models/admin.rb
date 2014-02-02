@@ -6,4 +6,8 @@ class Admin < ActiveRecord::Base
 
   has_many :posts, as: :creator
 
+  def name
+  	'admin'
+  end
+
 end
