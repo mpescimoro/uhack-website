@@ -12,17 +12,19 @@
 //$text-color: #FFF;
 
 
-$post-main-1: #ABE9F0;
-$post-main-2: #CECECE;
-$tag-color: #F5F57E;
+$post-main-1: #D6ECF5;
+$post-main-2: #EFEFEF;
+$tag-color: #28CFFF;
 $text-color: #000;
 $label-font-color: #000;
 
 @mixin tag($bg-color) {
-	@include label(
+	@include label-style(
 		$bg: $bg-color,
 		$radius:1000px
 	);
+	@include label-base();
+	@include label-size();
 
 	margin-bottom: 5px;
 	margin-right: 3px;
@@ -46,7 +48,7 @@ $label-font-color: #000;
 	);
 
 	@include radius(
-	$radius: 2em
+	$radius: 0.55em
 	);
 
 	color: $text-color;

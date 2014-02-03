@@ -16,12 +16,11 @@
 
   <body data-no-turbolink>
 
-    <%= render 'layouts/header' %>
-    
-    <div class="row">
+    <!div class="row">
+      <%= render 'layouts/header' %>
       <%= display_flash_messages %>
       <%= yield %>
-    </div>
+    <!/div>
 
     <%= render 'layouts/footer' %>
 

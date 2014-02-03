@@ -1,21 +1,24 @@
 Uhack::Application.routes.draw do
-  resources :tags
 
-  devise_for :super_users
-  devise_for :admins
 
+  # Posts
   get '/posts/tag/:tag_id', to: 'posts#index', as: 'posts_with_tag'
   get '/posts/search', to: 'posts#search', as: 'search_posts'
   get '/posts/:id/publish', to: 'posts#publish', as: 'publish_post'
   get '/posts/:id/unpublish', to: 'posts#unpublish', as: 'unpublish_post'
   resources :posts
 
+  resources :tags
+
+  # Static pages
   get "pages/index"
 
+  # Users
+  devise_for :super_users
+  devise_for :admins
   as :admin do
     get "/admin" => "devise/sessions#new"
   end
-
   as :super_user do
     get "/user" => "devise/sessions#new"
   end

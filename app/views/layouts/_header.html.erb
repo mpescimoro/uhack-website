@@ -1,49 +1,46 @@
-<div class="row">
+<%= image_tag 'console_fx.gif' %>
 
-  <!-- Large -->
+<!-- Large -->
 
-  <nav class="top-bar" data-topbar>
-      
-    <!-- Title -->
-    <ul class="title-area">
-      <li class="name"><h1><%= link_to 'µhack', root_path %></h1></li>
-      <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+<nav class="top-bar" data-topbar>
+    
+  <!-- Title -->
+  <ul class="title-area">
+    <li class="name"><h1><%= link_to 'µhack', root_path %></h1></li>
+    <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+  </ul>
+
+  <!-- Links -->
+  <section class="top-bar-section">
+
+    <ul class="left">
+      <li class="divider"></li>
+      <!-- Blog search form -->
+      <%= content_tag_if :li, posts_controller?, class: 'has_form' do %>
+        <div class='row collapse'>
+          <%= form_tag(search_posts_path, method: :get) do %>
+            <div class='small-12 columns'>
+              <%= text_field_tag :search, '', placeholder: 'Cerca nel blog...' %>
+              <%= submit_tag 'Cerca', style: 'display:none;' %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
     </ul>
 
-    <!-- Links -->
-    <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <li><a href="#">About</a></li>
+      <li class="divider"></li>
+      <li><a href="#">Partecipa</a></li>
+      <li class="divider"></li>
+      <li><a href="#" class='logout_link'>Contattaci</a></li>
+      <li class="divider"></li>
+      <li><%= link_to 'Blog', posts_path %></li>
+      <%= topbar_logout_link :admin, 'Logout admin' %>
+      <%= topbar_logout_link :super_user, 'Logout user' %>
+    </ul>
+  </section>
+</nav>
 
-      <ul class="left">
-        <li class="divider"></li>
-        <!-- Blog search form -->
-        <%= content_tag_if :li, posts_controller?, class: 'has_form' do %>
-          <div class='row collapse'>
-            <%= form_tag(search_posts_path, method: :get) do %>
-              <div class='small-12 columns'>
-                <%= text_field_tag :search, '', placeholder: 'Cerca nel blog...' %>
-                <%= submit_tag 'Cerca', style: 'display:none;' %>
-              </div>
-            <% end %>
-          </div>
-        <% end %>
-      </ul>
-  
-      <ul class="right">
-        <li class="divider"></li>
-        <li><a href="#">About</a></li>
-        <li class="divider"></li>
-        <li><a href="#">Partecipa</a></li>
-        <li class="divider"></li>
-        <li><a href="#" class='logout_link'>Contattaci</a></li>
-        <li class="divider"></li>
-        <li><%= link_to 'Blog', posts_path %></li>
-        <%= topbar_logout_link :admin, 'Logout admin' %>
-        <%= topbar_logout_link :super_user, 'Logout user' %>
-      </ul>
-    </section>
-  </nav>
-
-  <!-- Small -->
-
-
-</div>
+<!-- Small -->
