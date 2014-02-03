@@ -12,13 +12,17 @@
 //$text-color: #FFF;
 
 
-$post-main-1: #D6ECF5;
+$post-main-1: #EFEFEF;
 $post-main-2: #EFEFEF;
-$tag-color: #28CFFF;
+$tag-color: #28CF24;
 $text-color: #000;
-$label-font-color: #000;
+$tag-font-color: #000;
 
 @mixin tag($bg-color) {
+  &:hover {
+  	color: #fff;
+  }
+
 	@include label-style(
 		$bg: $bg-color,
 		$radius:1000px
