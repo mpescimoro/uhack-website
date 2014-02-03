@@ -19,7 +19,9 @@
     <!div class="row">
       <%= render 'layouts/header' %>
       <%= display_flash_messages %>
-      <%= yield %>
+      <div class='row'>
+        <%= yield %>
+      </div>
     <!/div>
 
     <%= render 'layouts/footer' %>

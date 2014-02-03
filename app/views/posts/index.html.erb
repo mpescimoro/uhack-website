@@ -1,7 +1,7 @@
 
 
 <!div class='row'>
-<div class='large-7 large-offset-1 columns'>
+<div class='medium-7 medium-offset-1 columns'>
 
   <div class='row'>
     <div class='small-12 columns'>
@@ -15,18 +15,20 @@
       <% end %>
     </div>
   </div>
-  <%= render @unpublished_posts if super_user_signed_in? %>
+  <%= render @unpublished_posts if super_user_signed_in? and !params[:search] %>
   <%= render @posts %>
 </div>
 
-<div class='large-3 large-offset-1 columns'>
-  <div class='row collapse'>
-    <div class='small-12 columns'>
-      <br>
-      <%= link_to 'Nuovo post', new_post_path, class: 'radius button' %>
+<div class='medium-3 medium-offset-1 columns'>
+  <% if signed_in? [:super_user, :admin] %>
+    <div class='row collapse'>
+      <div class='small-12 columns'>
+        <br>
+        <%= link_to 'Nuovo post', new_post_path, class: 'radius button' %>
+      </div>
     </div>
-  </div>
-  <hr>
+    <hr>
+  <% end %>
   <div class='row'>
     <div class='small-12 columns'>
       <h3>Tags</h3>

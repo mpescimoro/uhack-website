@@ -46,7 +46,7 @@ $tag-font-color: #000;
 	box-shadow: 3px 3px 2px #000;
 }
 
-@mixin post_panel($bg-color, $button-color) {
+@mixin post_panel($bg-color) {
 	@include panel(
 	$bg: $bg-color
 	);
@@ -65,9 +65,9 @@ $tag-font-color: #000;
 	}
 
 	.bttn {
-		@include button($bg: $button-color,
-		$padding: 0.5rem,
-		$radius: 3px
+		@include button(
+			$padding: 0.5rem,
+			$radius: 3px
 		);
 	}
 }
@@ -75,14 +75,12 @@ $tag-font-color: #000;
 
 .post_panel_odd {
 	@include post_panel(
-		$bg-color: $post-main-1,
-		$button-color: $post-main-2
+		$bg-color: $post-main-1
 	);
 }
 
 .post_panel_even {
 	@include post_panel(
-		$bg-color: $post-main-2,
-		$button-color: $post-main-1
+		$bg-color: $post-main-2
 	);
 }
