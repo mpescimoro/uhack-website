@@ -12,6 +12,8 @@ Uhack::Application.routes.draw do
 
   # Static pages
   get "pages/index"
+  get "pages/chi_siamo", as: 'chi_siamo'
+  get "pages/partecipa", as: 'partecipa'
 
   # Users
   devise_for :super_users
