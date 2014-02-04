@@ -2,14 +2,13 @@
 <div class='medium-7 medium-offset-1 columns'>
 
   <div class='row'>
+    <br>
     <div class='small-12 columns'>
       <% if params[:search] %>
         <h4><i>
           Hai cercato '<%= params[:search] %>', 
           la ricerca ha prodotto <%= @posts.count %> risultati
         </i></h4>
-      <% else %>
-        <h1>µBlog</h1>
       <% end %>
     </div>
   </div>
