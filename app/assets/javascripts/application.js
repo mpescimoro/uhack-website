@@ -16,4 +16,11 @@
 //= require turbolinks
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+$(function(){ $(document).foundation({        
+        orbit: {
+            slide_number: false,
+            bullets: false,
+            timer: false
+        }
+    }); 
+});
