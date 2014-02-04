@@ -7,13 +7,13 @@ module TagsHelper
 	end
 
 	def taggify(tag)
-		link_to tag.name, posts_with_tag_path(tag.name), class: 'tag'
+		link_to tag.name, posts_with_tag_path(tag), class: 'tag'
 	end
 
 	def tag_list_elem(tag, selected_tag_id=0)
 		selected = selected_tag_id == tag.id
 		_class = selected ? ' selected_tag' : ' tag'
-		path = selected ? posts_path : posts_with_tag_path(tag.name)
+		path = selected ? posts_path : posts_with_tag_path(tag)
 		link_to "#{tag.name} (#{tag.published_posts_count})".html_safe, path, class: _class
 	end
 	

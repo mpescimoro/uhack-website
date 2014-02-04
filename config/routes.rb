@@ -2,7 +2,7 @@ Uhack::Application.routes.draw do
 
 
   # Posts
-  get '/posts/tagged/:tag', to: 'posts#index', as: 'posts_with_tag'
+  get '/posts/tag/:tag_id', to: 'posts#index', as: 'posts_with_tag'
   get '/posts/search', to: 'posts#search', as: 'search_posts'
   get '/posts/:id/publish', to: 'posts#publish', as: 'publish_post'
   get '/posts/:id/unpublish', to: 'posts#unpublish', as: 'unpublish_post'
