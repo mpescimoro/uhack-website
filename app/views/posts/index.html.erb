@@ -1,6 +1,4 @@
 
-
-<!div class='row'>
 <div class='medium-7 medium-offset-1 columns'>
 
   <div class='row'>
@@ -15,7 +13,7 @@
       <% end %>
     </div>
   </div>
-  <%= render @unpublished_posts if super_user_signed_in? and !params[:search] %>
+  <%= render @unpublished_posts if super_user_signed_in? %>
   <%= render @posts %>
 </div>
 
@@ -36,4 +34,3 @@
     </div>
   </div>
 </div>
-<!/div>
