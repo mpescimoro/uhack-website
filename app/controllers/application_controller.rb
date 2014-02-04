@@ -25,6 +25,10 @@ class ApplicationController < ActionController::Base
     session[:previous_url] || root_path
   end
 
+  def current_creator
+    current_super_user || current_admin
+  end
+
   protected
   def link_uris!(string)
     string.gsub! URI.regexp do |match|

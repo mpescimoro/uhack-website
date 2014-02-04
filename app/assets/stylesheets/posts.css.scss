@@ -15,6 +15,7 @@
 $post-main-1: #EFEFEF;
 $post-main-2: #EFEFEF;
 $tag-color: #28CF24;
+$selected-tag-color: #000;
 $text-color: #000;
 $tag-font-color: #000;
 
@@ -39,11 +40,7 @@ $tag-font-color: #000;
 }
 
 .selected_tag {
-	@include tag($tag-color);
-
-	-moz-box-shadow: 3px 3px 2px #000;
-	-webkit-box-shadow: 3px 3px 2px #000;
-	box-shadow: 3px 3px 2px #000;
+	@include tag($selected-tag-color);
 }
 
 @mixin post_panel($bg-color) {
@@ -58,10 +55,6 @@ $tag-font-color: #000;
 	color: $text-color;
 	h2 a {
 		color: $text-color;
-	}
-
-	hr {
-		border-top: dotted 4px;
 	}
 
 	.bttn {

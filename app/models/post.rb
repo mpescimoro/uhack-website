@@ -7,6 +7,7 @@ class Post < ActiveRecord::Base
 	has_many :tagships,  as: :taggable, dependent: :destroy
 	has_many :tags, through: :tagships
 
+  validates :creator_id, presence: true
 
 	def publish_date
 		published_at.strftime('%d/%m/%Y')

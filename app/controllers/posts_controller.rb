@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :publish, :unpublish]
-  before_action :authenticate!, except: [:show, :index, :search]
+  before_action :authenticate_creator!, except: [:show, :index, :search]
 
   # GET /posts
   # GET /posts.json
@@ -37,7 +37,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(post_params, creator: current_creator)
     @post.add_or_create_tags(tag_names)
 
     respond_to do |format|
@@ -111,7 +111,7 @@ class PostsController < ApplicationController
       params.require(:post).permit(:title, :body)
     end
 
-    def authenticate!
+    def authenticate_creator!
       redirect_to new_super_user_session_path, alert: "Devi essere loggato per poter postare" unless signed_in? [:admin, :super_user]
     end
 

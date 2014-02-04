@@ -1,18 +1,23 @@
 <div class='row <%= 'post_panel_' + cycle('odd', 'even') %>'>
 
-	<div class='small-8 columns'>
+	<i>
+		<div class='small-6 columns'>
+			<% if post.published? %>
+				<%= post.publish_date if  post.published? %>
+			<% else %>
+				non pubblicato
+			<% end %>
+		</div>
+		<div class='small-6 columns text-right'>
+			autore <%= post.creator.username %>
+		</div>
+	</i>
+
+	<div class='small-12 columns'>
 		<h3><b><%= link_to post.title.html_safe, post_path(post) %></b></h3>
 	</div>
-	<div class='small-4 columns'>
-		<i>
-		<% if post.published? %>
-			del <%= post.publish_date if  post.published? %>
-		<% else %>
-			non pubblicato
-		<% end %>
-		</i>
-	</div>
 	<hr>
+
 	<div class='small-12 columns body'>
 		<%= post.body.html_safe %>
 	</div>
