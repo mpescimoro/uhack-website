@@ -1,5 +1,12 @@
 module ApplicationHelper
 	include FoundationRailsHelper::FlashHelper
+	include SuperRolesHelper
+
+	def link_uris(string)
+    string.gsub URI.regexp do |match|
+      "<a href='#{match}'>#{match}</a>"
+    end.html_safe
+  end
 
 	def logout_link(role, text='Logout', opt={})
 		eval %Q{link_to text, destroy_#{role}_session_path, opt.merge!({method: :delete}) }
@@ -40,6 +47,6 @@ module ApplicationHelper
 
 	def content_tag_if(tag, condition, opt={}, &block)
 		content_tag(tag, opt, &block) if condition
-	end 
+	end
 
 end

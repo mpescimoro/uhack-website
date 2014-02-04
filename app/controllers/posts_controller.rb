@@ -21,6 +21,8 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+    @comment = Comment.new
+    @comments = @post.comments.order(:created_at)
   end
 
   # GET /posts/new
@@ -39,7 +41,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params, creator: current_creator)
+    @post = Post.new(post_params.merge!({creator: current_creator(:super_user)}))
     @post.add_or_create_tags(tag_names)
 
     respond_to do |format|

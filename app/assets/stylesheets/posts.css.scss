@@ -13,11 +13,9 @@
 
 
 $post-main-1: #EFEFEF;
-$post-main-2: #EFEFEF;
 $tag-color: #28CF24;
 $selected-tag-color: #000;
 $text-color: #000;
-$tag-font-color: #000;
 
 @mixin tag($bg-color) {
   &:hover {
@@ -44,16 +42,12 @@ $tag-font-color: #000;
 }
 
 @mixin post_panel($bg-color) {
-	@include panel(
-	$bg: $bg-color
-	);
-
-	@include radius(
-	$radius: 0.55em
-	);
-
-	color: $text-color;
-	h2 a {
+	//@include panel(
+	//	$bg: $bg-color
+	//);
+	padding-bottom: 2rem;
+	
+	h2 a  {
 		color: $text-color;
 	}
 
@@ -63,8 +57,14 @@ $tag-font-color: #000;
 			$radius: 3px
 		);
 	}
+
 	.body {
+		color: $text-color;
 		text-align: justify;
+	}
+
+	.top {
+		color: lighten($text-color, 40%)
 	}
 }
 
@@ -77,6 +77,6 @@ $tag-font-color: #000;
 
 .post_panel_even {
 	@include post_panel(
-		$bg-color: $post-main-2
+		$bg-color: $post-main-1
 	);
 }

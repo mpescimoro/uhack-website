@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include SuperRolesHelper
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -25,17 +26,7 @@ class ApplicationController < ActionController::Base
     session[:previous_url] || root_path
   end
 
-  def current_creator
-    current_super_user || current_admin
-  end
-
   protected
-  def link_uris!(string)
-    string.gsub! URI.regexp do |match|
-      "<a href='#{match}'>#{match}</a>"
-    end
-  end
-
   def devise_parameter_sanitizer
   	if resource_class == SuperUser
   		SuperUser::ParameterSanitizer.new(SuperUser, :user, params)

@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
   before_destroy :destroy_orphan_tags
 
 	belongs_to :creator, polymorphic: true
+  has_many :comments, as: :commentable
 	has_many :tagships,  as: :taggable, dependent: :destroy
 	has_many :tags, through: :tagships
 

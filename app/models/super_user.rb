@@ -5,6 +5,7 @@ class SuperUser < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :posts, as: :creator
+  has_many :comments, as: :commenter, dependent: :destroy
 
   validates :username, uniqueness: { case_sentitive: false }
 

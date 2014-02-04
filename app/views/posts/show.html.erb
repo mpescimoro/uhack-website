@@ -1,9 +1,11 @@
-<!-- Da rifare -->
+
 <div class='row'>
 	<div class='small-10 small-offset-1 columns'>
 		<br>
 		<%= render @post %>
+		<!%= link_to 'Torna al blog', posts_path %>
+
+		<%= render partial: 'comment', collection: @comments %>
+		<%= render 'comment_form' %>
 	</div>
 </div>
-
-<%= link_to 'Torna al blog', posts_path %>
