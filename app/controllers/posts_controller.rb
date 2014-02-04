@@ -7,8 +7,10 @@ class PostsController < ApplicationController
   def index
     @unpublished_posts = Post.where(published_at: nil) if super_user_signed_in?
     @posts = Post.where.not(published_at: nil).order(published_at: :desc)
-    @selected_tag_id = params[:tag_id].to_i
-    @posts = @posts.joins(:tagships).where(tagships: {tag_id: @selected_tag_id}) if params[:tag_id]
+    if params[:tag]
+      @selected_tag_id = Tag.where(name: params[:tag]).first.id
+      @posts = @posts.joins(:tagships).where(tagships: {tag_id: @selected_tag_id})
+    end
   end
 
   def search

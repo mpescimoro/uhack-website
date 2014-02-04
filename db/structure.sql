@@ -434,6 +434,13 @@ CREATE UNIQUE INDEX index_super_users_on_reset_password_token ON super_users USI
 
 
 --
+-- Name: index_tags_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE UNIQUE INDEX index_tags_on_name ON tags USING btree (name);
+
+
+--
 -- Name: posts_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -487,3 +494,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140129183546');
 INSERT INTO schema_migrations (version) VALUES ('20140131223815');
 
 INSERT INTO schema_migrations (version) VALUES ('20140201110704');
+
+INSERT INTO schema_migrations (version) VALUES ('20140204175114');
