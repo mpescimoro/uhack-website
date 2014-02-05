@@ -1,48 +1,43 @@
-<div class='row post_panel_even'>
+<div class='row post_panel'>
 
-
-	<div class='small-12 columns'>
+	<div class='small-12 columns title'>
 		<h3><b><%= link_to post.title.html_safe, post_path(post) %></b></h3>
 	</div>
 	
-	<i>
-		<div class='small-6 columns top'>
-			<% if post.published? %>
-				<%= post.publish_date if  post.published? %>
-			<% else %>
-				non pubblicato
-			<% end %>
-		</div>
-		<div class='small-6 columns text-right top'>
-			autore: <%= post.creator.username %>
-		</div>
-	</i>
+	<div class='small-6 columns info'>
+		<% if post.published? %>
+			<%= post.publish_date if  post.published? %>
+		<% else %>
+			non pubblicato
+		<% end %>
+	</div>
+	<div class='small-6 columns text-right info'>
+		autore: <%= post.creator.username %>
+	</div>
 	<hr>
 
 	<div class='small-12 columns body'>
 		<%= post.body.html_safe %>
 	</div>
 
-	<div class='small-12 columns'>
-		<b>Tagged:</b> <%= tags_for post %></br>
+	<div class='small-12 columns tagged'>
+		Tagged: <%= tags_for post %>
 	</div>
 	
-	<% if signed_in? [:admin, :super_user] %>
+	<% if creator_signed_in? %>
 	<div class='small-4 columns text-left'>
-		<%= link_to 'Modifica', edit_post_path(post), class: 'bttn' %>
+		<%= link_to '#Modifica', edit_post_path(post) %>
 	</div>
 	<div class='small-4 columns text-center'>
 		<% if post.published? %>
-			<%= link_to 'Spubblica', unpublish_post_path(post), class: 'bttn', data: { confirm: 'Sicuro di volerlo spubblicare?'} if post.published? %>
+			<%= link_to '#Spubblica', unpublish_post_path(post), data: { confirm: 'Sicuro di volerlo spubblicare?'} if post.published? %>
 		<% else %>
-			<%= link_to 'Pubblica', publish_post_path(post), class: 'bttn', data: { confirm: 'Sicuro di volerlo pubblicare?' } %>
+			<%= link_to '#Pubblica', publish_post_path(post), data: { confirm: 'Sicuro di volerlo pubblicare?' } %>
 		<% end %>
 	</div>
 	<div class='small-4 columns text-right'>
-		<%= link_to 'Elimina', post_path(post), method: :delete, data: { confirm: 'Sei sicuro?' }, class: 'bttn' %>
+		<%= link_to '#Elimina', post_path(post), method: :delete, data: { confirm: 'Sei sicuro?' } %>
 	</div>
 	<% end %>
 
 </div>
-
-<br>

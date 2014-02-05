@@ -1,3 +1,5 @@
+@import "main";
+
 body {
   background-color: #fff;
   color: #333;
@@ -19,9 +21,9 @@ pre {
 }
 
 a {
-  color: #000;
+  color: $main-light;
   &:hover {
-    color: #28CF24;
+    color: darken($main-light, 10%);
   }
 }
 
