@@ -1,7 +1,7 @@
 <%= form_for([@post, @post.comments.build]) do |f| %>
 
   <div class="field">
-    <%= f.text_area :body, label: 'Inserisci un commento' %>
+    <%= f.text_area :body, label: false %>
   </div>
   <div class="actions">
     <%= f.submit 'Commenta' %>

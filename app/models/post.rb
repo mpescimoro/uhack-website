@@ -18,6 +18,7 @@ class Post < ActiveRecord::Base
     published_at ? true : false
   end
 
+
   private
   def destroy_orphan_tags
     self.tags.each do |tag|

@@ -1,4 +1,5 @@
 class Comment < ActiveRecord::Base
+	include SuperRolesHelper
 
 	belongs_to :commenter, polymorphic: true
 	belongs_to :commentable, polymorphic: true
@@ -6,11 +7,4 @@ class Comment < ActiveRecord::Base
 	validates :commenter_id, presence: true
 	validates :commentable_id, presence: true
 
-	def formatted_body
-		link_uris!(self.body)
-	end
-
-	def currents?
-		self.commenter == current_user || self.commenter == current_super_user
-	end
 end

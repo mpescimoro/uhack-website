@@ -1,6 +1,7 @@
-require 'devise/controllers/helpers'
+#require 'devise/controllers/helpers'
 
 module SuperRolesHelper
+	include Devise::Controllers
 	
 	MAPPINGS = {
 		commenter: {
@@ -46,6 +47,13 @@ module SuperRolesHelper
  				roles.inject(nil) do |found, role|
  					found || eval("current_#{role}")
  				end
+ 			end
+
+ 			define_method "current_#{super_role.to_s.pluralize}" do |first=nil|
+ 				roles.map!(&:to_sym).unshift roles.delete(first.to_sym) if first
+ 				roles.inject([]) do |users, role|
+ 					users.push eval("current_#{role}")
+ 				end.compact
  			end
  		end
  	end

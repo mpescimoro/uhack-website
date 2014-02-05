@@ -2,9 +2,10 @@ module ApplicationHelper
 	include FoundationRailsHelper::FlashHelper
 	include SuperRolesHelper
 
-	def link_uris(string)
+	def link_uris(string, opt={})
     string.gsub URI.regexp do |match|
-      "<a href='#{match}'>#{match}</a>"
+    	link_to match, match, opt
+      #"<a href='#{match}'>#{match}</a>"
     end.html_safe
   end
 
