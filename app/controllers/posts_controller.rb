@@ -116,7 +116,7 @@ class PostsController < ApplicationController
     end
 
     def authenticate_creator!
-      redirect_to new_super_user_session_path, alert: "Devi essere loggato per poter postare" unless signed_in? [:admin, :super_user]
+      redirect_to new_super_user_session_path, alert: "Devi essere loggato per poter postare" unless creator_signed_in?
     end
 
     def tag_names
