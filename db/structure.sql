@@ -105,54 +105,6 @@ ALTER SEQUENCE comments_id_seq OWNED BY comments.id;
 
 
 --
--- Name: events; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE events (
-    id integer NOT NULL,
-    title character varying(255),
-    date date,
-    t_bike boolean,
-    t_car boolean,
-    t_bus boolean,
-    t_train boolean,
-    t_boat boolean,
-    distance numeric,
-    difficult character varying(255),
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone,
-    image_file_name character varying(255),
-    image_content_type character varying(255),
-    image_file_size integer,
-    image_updated_at timestamp without time zone,
-    document_file_name character varying(255),
-    document_content_type character varying(255),
-    document_file_size integer,
-    document_updated_at timestamp without time zone,
-    description text
-);
-
-
---
--- Name: events_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE events_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: events_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE events_id_seq OWNED BY events.id;
-
-
---
 -- Name: guests; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -226,40 +178,6 @@ ALTER SEQUENCE posts_id_seq OWNED BY posts.id;
 CREATE TABLE schema_migrations (
     version character varying(255) NOT NULL
 );
-
-
---
--- Name: subscribers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE TABLE subscribers (
-    id integer NOT NULL,
-    email character varying(255),
-    name character varying(255),
-    active boolean,
-    internal boolean,
-    created_at timestamp without time zone,
-    updated_at timestamp without time zone
-);
-
-
---
--- Name: subscribers_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE subscribers_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- Name: subscribers_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE subscribers_id_seq OWNED BY subscribers.id;
 
 
 --
@@ -426,13 +344,6 @@ ALTER TABLE ONLY comments ALTER COLUMN id SET DEFAULT nextval('comments_id_seq':
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
-ALTER TABLE ONLY events ALTER COLUMN id SET DEFAULT nextval('events_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
 ALTER TABLE ONLY guests ALTER COLUMN id SET DEFAULT nextval('guests_id_seq'::regclass);
 
 
@@ -441,13 +352,6 @@ ALTER TABLE ONLY guests ALTER COLUMN id SET DEFAULT nextval('guests_id_seq'::reg
 --
 
 ALTER TABLE ONLY posts ALTER COLUMN id SET DEFAULT nextval('posts_id_seq'::regclass);
-
-
---
--- Name: id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY subscribers ALTER COLUMN id SET DEFAULT nextval('subscribers_id_seq'::regclass);
 
 
 --
@@ -495,14 +399,6 @@ ALTER TABLE ONLY comments
 
 
 --
--- Name: events_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY events
-    ADD CONSTRAINT events_pkey PRIMARY KEY (id);
-
-
---
 -- Name: guests_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -516,14 +412,6 @@ ALTER TABLE ONLY guests
 
 ALTER TABLE ONLY posts
     ADD CONSTRAINT posts_pkey PRIMARY KEY (id);
-
-
---
--- Name: subscribers_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
---
-
-ALTER TABLE ONLY subscribers
-    ADD CONSTRAINT subscribers_pkey PRIMARY KEY (id);
 
 
 --
@@ -632,7 +520,7 @@ CREATE UNIQUE INDEX index_super_users_on_reset_password_token ON super_users USI
 -- Name: index_tags_on_name; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
-CREATE UNIQUE INDEX index_tags_on_name ON tags USING btree (name);
+CREATE INDEX index_tags_on_name ON tags USING btree (name);
 
 
 --
@@ -657,20 +545,6 @@ CREATE INDEX index_users_on_username ON users USING btree (username);
 
 
 --
--- Name: posts_to_tsvector_idx; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX posts_to_tsvector_idx ON posts USING gin (to_tsvector('english'::regconfig, (title)::text));
-
-
---
--- Name: posts_to_tsvector_idx1; Type: INDEX; Schema: public; Owner: -; Tablespace: 
---
-
-CREATE INDEX posts_to_tsvector_idx1 ON posts USING gin (to_tsvector('english'::regconfig, body));
-
-
---
 -- Name: unique_schema_migrations; Type: INDEX; Schema: public; Owner: -; Tablespace: 
 --
 
@@ -683,16 +557,6 @@ CREATE UNIQUE INDEX unique_schema_migrations ON schema_migrations USING btree (v
 
 SET search_path TO "$user",public;
 
-INSERT INTO schema_migrations (version) VALUES ('20131022144606');
-
-INSERT INTO schema_migrations (version) VALUES ('20131022144958');
-
-INSERT INTO schema_migrations (version) VALUES ('20131029064134');
-
-INSERT INTO schema_migrations (version) VALUES ('20131029210516');
-
-INSERT INTO schema_migrations (version) VALUES ('20131029210650');
-
 INSERT INTO schema_migrations (version) VALUES ('20140128074245');
 
 INSERT INTO schema_migrations (version) VALUES ('20140128074409');
@@ -704,8 +568,6 @@ INSERT INTO schema_migrations (version) VALUES ('20140128205050');
 INSERT INTO schema_migrations (version) VALUES ('20140128205549');
 
 INSERT INTO schema_migrations (version) VALUES ('20140128205737');
-
-INSERT INTO schema_migrations (version) VALUES ('20140129183546');
 
 INSERT INTO schema_migrations (version) VALUES ('20140131223815');
 

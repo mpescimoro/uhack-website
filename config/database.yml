@@ -1,23 +1,17 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: amicibici_development
+  database: uhack_development
   pool: 5
-  username:
-  password:
 
 test:
   adapter: postgresql
   encoding: unicode
-  database: amicibici_test
+  database: uhack_test
   pool: 5
-  username:
-  password:
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: amicibici_production
+  database: uhack_production
   pool: 5
-  username:
-  password:
