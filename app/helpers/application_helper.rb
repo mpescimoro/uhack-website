@@ -1,11 +1,9 @@
 module ApplicationHelper
 	include FoundationRailsHelper::FlashHelper
-	include SuperRolesHelper
 
 	def link_uris(string, opt={})
     string.gsub URI.regexp do |match|
     	link_to match, match, opt
-      #"<a href='#{match}'>#{match}</a>"
     end.html_safe
   end
 
@@ -24,10 +22,11 @@ module ApplicationHelper
 	end
 
 	def topbar_login_logout(role, role_name=nil, opt={})
+		username = eval("current_#{role_name}.username") if signed_in?(role)
 		content_tag :li, opt.merge!({class: 'divider'}) do
 			role_name ||= role.to_s.humanize.downcase
 			content_tag :li do
-				signed_in?(role) ? logout_link(role, "Logout #{role_name}") : login_link(role, "Login #{role_name}")
+				signed_in?(role) ? logout_link(role, "Logout #{username}") : login_link(role, "Login")
 			end
 		end
 	end

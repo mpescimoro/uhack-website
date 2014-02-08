@@ -6,10 +6,13 @@
 		<!%= link_to 'Torna al blog', posts_path %>
 
 		<%= render partial: 'comment', collection: @comments %>
-		<% if commenter_signed_in? %>
-			<%= render 'comment_form' %>
-		<% else %>
-			<! TODO form per commentare come guest >
-		<% end %>
+		<fieldset>
+			<legend>Aggiungi un commento!</legend>
+			<% if commenter_signed_in? %>
+				<%= render 'comment_form' %>
+			<% else %>
+    	  <%= render 'guest_comment_form' %>
+			<% end %>
+		</fieldset>
 	</div>
 </div>

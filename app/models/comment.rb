@@ -6,5 +6,5 @@ class Comment < ActiveRecord::Base
 
 	validates :commenter_id, presence: true
 	validates :commentable_id, presence: true
-
+  validates :body, presence: { message: 'campo obbligatorio' }
 end

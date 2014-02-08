@@ -1,0 +1,17 @@
+
+<%= form_for([@post, @post.comments.build], url: post_guest_comment_url(@post)) do |f| %>
+  <%= f.fields_for :guest do |g| %>
+      <div class="small-6 columns">
+        <%= g.text_field :username, label: 'Nome ospite' %>
+      </div>
+      <div class="small-6 columns">
+        <%= g.text_field :email, label: 'Email' %>
+      </div>
+  <% end %>
+  <div class="medium-9 columns">
+    <%= f.text_area :body, label: false %>
+  </div>
+  <div class="medium-3 columns">
+    <%= f.submit 'Commenta' %>
+  </div>
+<% end %>

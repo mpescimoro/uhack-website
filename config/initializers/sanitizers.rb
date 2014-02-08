@@ -1,1 +1,1 @@
-require 'super_user_sanitizer'
+require 'sanitizers'

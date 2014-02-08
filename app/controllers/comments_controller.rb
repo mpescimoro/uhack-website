@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_action :set_commentable, only: [:create, :edit, :update]
   before_action :authenticate_comment_commenter!, only: [:edit, :update, :destroy]
+  before_action :authenticate_commenter!, only: [:create]
 
   # GET /comments
   # GET /comments.json
@@ -30,14 +31,31 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @commentable.save
-        format.html { redirect_to @commentable, notice: 'Comment was successfully created.' }
+        format.html { redirect_to @commentable, notice: 'Commento creato' }
         format.json { render action: 'show', status: :created, location: @comment }
       else
         format.html { redirect_to @commentable, alert: 'Qualcosa non va' }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.json { render json: @commentable.errors, status: :unprocessable_entity }
       end
     end
   end
+
+  def create_as_guest
+    guest = Guest.find_or_create(guest_params)
+    guest.save
+    @commentable.comments.build comment_params.merge!({commenter: guest})
+
+    respond_to do |format|
+      if @commentable.save
+        format.html { redirect_to @commentable, notice: 'Commento creato' }
+        format.json { render action: 'show', status: :created, location: @comment }
+      else
+        format.html { redirect_to @commentable, alert: 'Qualcosa non va' }
+        format.json { render json: @commentable.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
 
   # PATCH/PUT /comments/1
   # PATCH/PUT /comments/1.json
@@ -88,4 +106,9 @@ class CommentsController < ApplicationController
     def comment_params
       params.require(:comment).permit(:body)
     end
+
+    def guest_params
+      params.require(:comment).require(:guest).permit(:username, :email)
+    end
+
 end

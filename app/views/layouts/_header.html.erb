@@ -20,9 +20,6 @@
       <li><%= link_to 'Partecipa', partecipa_path %></li>
       <li class="divider"></li>
       <li><%= link_to 'Blog', posts_path %></li>
-      <%= topbar_login_logout :super_user, 'user' %>
-      <%= topbar_logout_link :admin, 'Logout admin' %>
-      <li class="divider"></li>
     </ul>      
 
     <ul class="right">
@@ -38,6 +35,8 @@
           <% end %>
         </div>
       <% end %>
+      <%= topbar_login_logout :user, 'user' %>
+      <%= topbar_logout_link :admin, 'Logout admin' %>
     </ul>
 
   </section>

@@ -1,9 +1,9 @@
 <%= form_for([@post, @post.comments.build]) do |f| %>
 
-  <div class="field">
+  <div class="medium-9 columns">
     <%= f.text_area :body, label: false %>
   </div>
-  <div class="actions">
+  <div class="medium-3 columns">
     <%= f.submit 'Commenta' %>
   </div>
 <% end %>

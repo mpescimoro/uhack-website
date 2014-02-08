@@ -1,6 +1,17 @@
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 
+
+require 'super_roles_helper'
+
+ActiveSupport.on_load(:action_controller) do
+  include SuperRolesHelper
+end
+
+ActiveSupport.on_load(:action_view) do
+  include SuperRolesHelper
+end
+
 Devise.setup do |config|
 
 

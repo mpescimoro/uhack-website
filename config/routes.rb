@@ -9,6 +9,7 @@ Uhack::Application.routes.draw do
   get '/posts/:id/publish', to: 'posts#publish', as: 'publish_post'
   get '/posts/:id/unpublish', to: 'posts#unpublish', as: 'unpublish_post'
   resources :posts do
+    post 'guest_comments', to: 'comments#create_as_guest', as: 'guest_comment'
     resources :comments
   end
 

@@ -4,10 +4,16 @@
 
 @import "main";
 
+@mixin comment() {
+	padding-top: 1rem;
+}
+
 .comment_even {
+	@include comment();
 	background-color: transparentize($main-light, 0.9);
 }
 
 .comment_odd {
-	background-color: transparent;
+	@include comment();
+	background-color: transparentize($main-dark, 0.9);
 }
