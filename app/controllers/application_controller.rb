@@ -37,13 +37,9 @@ class ApplicationController < ActionController::Base
   end
 
   def devise_path?
-    Devise.mappings.keys.map(&:to_s).inject(false) do |result, role|
-      result || request.fullpath.starts_with?("/#{role.pluralize}")
+    Devise.mappings.keys.inject(false) do |result, role|
+      result || request.fullpath.starts_with?("/#{role}")
     end
-  end
-
-  def storeable_path?
-    !(devise_path? || request.post?)
   end
 
 end
