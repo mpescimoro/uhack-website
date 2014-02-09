@@ -5,8 +5,6 @@ class Post < ActiveRecord::Base
 
 	belongs_to :creator, polymorphic: true
   has_many :comments, as: :commentable
-	has_many :tagships,  as: :taggable, dependent: :destroy
-	has_many :tags, through: :tagships
 
   validates :creator_id, presence: true
 

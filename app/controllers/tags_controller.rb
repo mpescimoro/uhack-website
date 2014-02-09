@@ -10,6 +10,8 @@ class TagsController < ApplicationController
   # GET /tags/1
   # GET /tags/1.json
   def show
+    @posts = @tag.posts.where.not(published_at: nil)
+    @users = @tag.super_users + @tag.users
   end
 
   private

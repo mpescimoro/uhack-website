@@ -41,7 +41,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params.merge!({creator: current_creator(:super_user)}))
+    @post = Post.new post_params.merge!({creator: current_creator(:super_user)})
     @post.add_or_create_tags(tag_names)
 
     respond_to do |format|
@@ -120,7 +120,7 @@ class PostsController < ApplicationController
     end
 
     def tag_names
-      params[:tag_names] ? params[:tag_names].split(/\s+/).uniq : []
+      parse_tag_names(params[:tag_names])
     end
 
 end

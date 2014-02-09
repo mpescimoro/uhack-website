@@ -1,10 +1,14 @@
 Uhack::Application.routes.draw do
 
 
+  def taggable(resource)
+      get "#{resource}/tag/:tag_id", to: "#{resource}#index", as: "#{resource}_with_tag"
+  end
 
-  devise_for :users
+
   # Posts
-  get '/posts/tag/:tag_id', to: 'posts#index', as: 'posts_with_tag'
+  taggable :posts
+  #get '/posts/tag/:tag_id', to: 'posts#index', as: 'posts_with_tag'
   get '/posts/search', to: 'posts#search', as: 'search_posts'
   get '/posts/:id/publish', to: 'posts#publish', as: 'publish_post'
   get '/posts/:id/unpublish', to: 'posts#unpublish', as: 'unpublish_post'
@@ -21,6 +25,9 @@ Uhack::Application.routes.draw do
   get "pages/partecipa", as: 'partecipa'
 
   # Users
+  taggable :users
+  devise_for :users
+  taggable :super_users
   devise_for :super_users
   devise_for :admins
   as :admin do
@@ -86,4 +93,7 @@ Uhack::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  
+
 end

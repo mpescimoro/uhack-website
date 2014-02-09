@@ -7,8 +7,12 @@ class Tag < ActiveRecord::Base
 
 	
 
-  def published_posts_count
+  def posts_count
     self.posts.where.not(published_at: nil).count
+  end
+
+  def users_count
+    self.users.count + self.super_users.count
   end
 
 end

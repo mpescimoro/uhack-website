@@ -1,5 +1,5 @@
 <% Tag.all.each do |tag| %>
-	<% if tag.published_posts_count > 0 %>
-		<%= tag_list_elem tag, tag.id==@selected_tag_id %>
+	<% if tag.posts_count > 0 %>
+		<%= tag_list_elem tag, tag.id==@selected_tag_id, params[:controller] %>
 	<% end %>
 <% end %>

@@ -25,6 +25,10 @@ class ApplicationController < ActionController::Base
     session[:previous_url] || root_path
   end
 
+  def parse_tag_names(tagstring)
+    tagstring ? tagstring.split(/\s+/).uniq : []
+  end
+
   protected
   def devise_parameter_sanitizer
   	if resource_class == SuperUser

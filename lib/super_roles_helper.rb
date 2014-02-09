@@ -1,4 +1,3 @@
-#require 'devise/controllers/helpers'
 
 module SuperRolesHelper
 	
