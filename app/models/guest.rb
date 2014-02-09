@@ -9,4 +9,8 @@ class Guest < ActiveRecord::Base
   def self.find_or_create(guest_params)
     Guest.create_with(username: guest_params[:username]).find_or_create_by(email: guest_params[:email])
   end
+
+  def username
+  	"#{super} (guest)"
+  end
 end
