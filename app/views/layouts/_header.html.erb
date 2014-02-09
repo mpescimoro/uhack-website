@@ -35,7 +35,9 @@
           <% end %>
         </div>
       <% end %>
-      <%= topbar_login_logout :user, 'user' %>
+      <%= topbar_profile_link :user %>
+      <%= topbar_profile_link :super_user %>
+      <%= topbar_login_logout :user, 'user' unless super_user_signed_in? %>
       <%= topbar_logout_link :super_user, 'Logout super' %>
       <%= topbar_logout_link :admin, 'Logout admin' %>
     </ul>

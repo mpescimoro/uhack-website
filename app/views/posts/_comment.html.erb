@@ -1,6 +1,6 @@
 <div class='row <%= cycle('comment_even', 'comment_odd') %>'>
 	<div class='small-12 columns'>
-		<b><%= comment.commenter.username %></b> dice:<br>
+		<b><%= profile_link comment.commenter %></b> dice:<br>
 		<p class="bubble">
 			<%= link_uris simple_format(comment.body), target: '_blank' %>
 		</p>

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   include Profileable
   include Taggable
+
   # Include default devise modules. Others available are:
   # :recoverable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -19,5 +20,5 @@ class User < ActiveRecord::Base
       where(conditions).first
     end
   end
-  
+
 end

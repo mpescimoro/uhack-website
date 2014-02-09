@@ -24,17 +24,25 @@ Uhack::Application.routes.draw do
   get "pages/chi_siamo", as: 'chi_siamo'
   get "pages/partecipa", as: 'partecipa'
 
-  # Users
-  taggable :users
-  devise_for :users
-  taggable :super_users
-  devise_for :super_users
+  # User roles
   devise_for :admins
   as :admin do
     get "/admin" => "devise/sessions#new"
   end
+
+  taggable :super_users
+  devise_for :super_users
   as :super_user do
-    get "/super_user" => "devise/sessions#new"
+    get "super_user" => "devise/sessions#new"
+    get 'super_users/edit' => 'devise/registrations#edit', :as => 'edit_super_user_registration'
+    get 'super_users/:id' => 'users#show_super', :as => 'super_user_profile'
+    put 'super_users' => 'devise/registrations#update', :as => 'super_user_registration'
+  end
+  
+  taggable :users
+  devise_for :users
+  as :user do
+    get 'users/:id' => 'users#show', :as => 'user_profile'
   end
 
   root "pages#index"

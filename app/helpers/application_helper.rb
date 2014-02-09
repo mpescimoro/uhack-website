@@ -18,7 +18,17 @@ module ApplicationHelper
 	def topbar_logout_link(role, text=nil, opt={})
 		content_tag :li, opt.merge!({class: 'divider'}) do 
 			content_tag :li, logout_link(role, text || "Logout #{role.to_s.humanize.downcase}")
-		end.html_safe if eval "#{role}_signed_in?" 
+		end.html_safe if signed_in?(role)
+	end
+
+	def current_profile_link(role, text='Edit', opt={})
+		eval %Q{link_to text, #{role}_profile_path(current_#{role})}
+	end
+
+	def topbar_profile_link(role, text=nil, opt={})
+		content_tag :li, opt.merge!({class: 'divider'}) do 
+			content_tag :li, current_profile_link(role, text || "Il mio profilo")
+		end.html_safe if signed_in?(role)
 	end
 
 	def topbar_login_logout(role, role_name=nil, opt={})
@@ -47,6 +57,12 @@ module ApplicationHelper
 
 	def content_tag_if(tag, condition, opt={}, &block)
 		content_tag(tag, opt, &block) if condition
+	end
+
+	def profile_link(user, text=nil, opt={})
+		return user.username if user.is_a? Admin
+		path = user.is_a?(SuperUser) ? super_user_profile_path(user) : user_profile_path(user)
+		link_to(text || user.username, path)
 	end
 
 end
