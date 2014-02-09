@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_action :set_commentable, only: [:create, :edit, :update]
+  before_action :set_commentable, only: [:create, :edit, :update, :create_as_guest]
   before_action :authenticate_comment_commenter!, only: [:edit, :update, :destroy]
   before_action :authenticate_commenter!, only: [:create]
 
