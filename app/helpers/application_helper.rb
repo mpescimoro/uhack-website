@@ -60,7 +60,7 @@ module ApplicationHelper
 	end
 
 	def profile_link(user, text=nil, opt={})
-		return user.username if user.is_a? Admin
+		return user.username if user.is_a? Guest
 		path = user.is_a?(SuperUser) ? super_user_profile_path(user) : user_profile_path(user)
 		link_to(text || user.username, path)
 	end

@@ -31,3 +31,4 @@ $selected-tag-color: $main-light;
 .selected_tag {
 	@include tag($selected-tag-color);
 }
+

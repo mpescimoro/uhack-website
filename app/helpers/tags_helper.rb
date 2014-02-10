@@ -1,8 +1,8 @@
 module TagsHelper
 
-	def tags_for(post)
+	def tags_for(post, controller=nil)
 		post.tags.inject("") do |tags, tag|
-			tags << taggify(tag)
+			tags << taggify(tag, controller)
 		end.html_safe
 	end
 

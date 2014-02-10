@@ -5,7 +5,12 @@
 @import "main";
 
 @mixin comment() {
-	padding-top: 1rem;
+	padding-top: 0.5rem;
+
+	.comment_image {
+		padding-left: 0.5rem !important;
+		padding-right: 0px !important;
+	}
 }
 
 .comment_even {
@@ -17,3 +22,4 @@
 	@include comment();
 	background-color: transparentize($main-dark, 0.9);
 }
+

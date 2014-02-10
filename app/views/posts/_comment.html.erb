@@ -1,12 +1,15 @@
 <div class='row <%= cycle('comment_even', 'comment_odd') %>'>
-	<div class='small-12 columns'>
-		<b><%= profile_link comment.commenter %></b> dice:<br>
-		<p class="bubble">
+	<div class='small-1 columns comment_image'>
+			<%= image_tag comment.commenter.image_url %>
+	</div>
+	<div class='small-11 columns'>
+		<p>
+		<b><%= profile_link comment.commenter %></b> dice:
 			<%= link_uris simple_format(comment.body), target: '_blank' %>
+			<% if comment_commenter_signed_in?(comment) %>
+				<%= link_to 'Elimina', post_comment_path(@post, comment), method: :delete %> | 
+				<%= link_to 'Modifica', edit_post_comment_path(@post, comment) %>
+			<% end %>
 		</p>
-		<% if comment_commenter_signed_in?(comment) %>
-			<%= link_to 'Elimina', post_comment_path(@post, comment), method: :delete %> | 
-			<%= link_to 'Modifica', edit_post_comment_path(@post, comment) %>
-		<% end %>
 	</div>
 </div>

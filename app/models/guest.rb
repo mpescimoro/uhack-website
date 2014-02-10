@@ -10,7 +10,7 @@ class Guest < ActiveRecord::Base
     Guest.create_with(username: guest_params[:username]).find_or_create_by(email: guest_params[:email])
   end
 
-  def username
-  	"#{super} (guest)"
+  def image_url
+    "http://placehold.it/500/8BC4E6/ffffff&text=guest"
   end
 end
