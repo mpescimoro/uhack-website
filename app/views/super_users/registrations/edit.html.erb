@@ -9,11 +9,14 @@
   <div><%= f.label :username %>
   <%= f.text_field :username%></div>
 
+  <div><%= f.label "immagine profilo (url)" %>
+  <%= f.text_field :image_url%></div>
+
   <div><%= f.label :descrizione %>
   <%= f.text_area :description%></div>
 
-  <div><%= f.label "immagine profilo (url)" %>
-  <%= f.text_field :image_url%></div>
+  <div><%= label_tag :tags %>
+  <%= text_area_tag :tags, resource.tagstring %></div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

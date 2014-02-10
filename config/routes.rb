@@ -31,16 +31,16 @@ Uhack::Application.routes.draw do
   end
 
   taggable :super_users
-  devise_for :super_users
+  devise_for :super_users, controllers: { registrations: 'users' }
   as :super_user do
     get "super_user" => "devise/sessions#new"
-    get 'super_users/edit' => 'devise/registrations#edit', :as => 'edit_super_user_registration'
+    get 'super_users/edit' => 'users#edit', :as => 'edit_super_user_registration'
     get 'super_users/:id' => 'users#show_super', :as => 'super_user_profile'
-    put 'super_users' => 'devise/registrations#update', :as => 'super_user_registration'
+    put 'super_users' => 'users#update', :as => 'super_user_registration'
   end
   
   taggable :users
-  devise_for :users
+  devise_for :users, controllers: { registrations: 'users' }
   as :user do
     get 'users/:id' => 'users#show', :as => 'user_profile'
   end
