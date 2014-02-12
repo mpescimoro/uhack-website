@@ -5,30 +5,34 @@
 @import "main";
 @import "foundation/components/labels";
 
-$tag-color: $main-dark;
-$selected-tag-color: $main-light;
+$tag-color: $main-light;
+$tag-bg-color: transparent;
+$selected-tag-bg-color: $main-dark;
 
-@mixin tag($bg-color) {
+@mixin tag($bg-color, $hover-color: $main-dark) {
   &:hover {
-  	color: #fff;
+  	color: $hover-color;
   }
 
-	@include label-style(
-		$bg: $bg-color,
-		$radius:1000px
-	);
-	@include label-base();
-	@include label-size();
+  background-color: $bg-color;
+
+	//@include label-style(
+	//	$bg: $bg-color,
+	//	$radius:1000px
+	//);
+	//@include label-base();
+	//@include label-size();
+
 
 	margin-bottom: 5px;
-	margin-right: 3px;
+	margin-right: 10px;
 }
 
 .tag {
-	@include tag($tag-color);
+	@include tag($tag-bg-color);
 }
 
 .selected_tag {
-	@include tag($selected-tag-color);
+	@include tag($selected-tag-bg-color, #fff);
 }
 

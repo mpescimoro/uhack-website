@@ -2,7 +2,7 @@ Uhack::Application.routes.draw do
 
 
   def taggable(resource)
-      get "#{resource}/tag/:tag_id", to: "#{resource}#index", as: "#{resource}_with_tag"
+    get "#{resource}/tag/:tag_id", to: "#{resource}#index", as: "#{resource}_with_tag"
   end
 
 
@@ -30,7 +30,7 @@ Uhack::Application.routes.draw do
     get "/admin" => "devise/sessions#new"
   end
 
-  taggable :super_users
+  #taggable :super_users
   devise_for :super_users, controllers: { registrations: 'users' }
   as :super_user do
     get "super_user" => "devise/sessions#new"
@@ -39,9 +39,9 @@ Uhack::Application.routes.draw do
     put 'super_users' => 'users#update', :as => 'super_user_registration'
   end
   
-  taggable :users
   devise_for :users, controllers: { registrations: 'users' }
   as :user do
+    taggable :users
     get 'users/:id' => 'users#show', :as => 'user_profile'
   end
 

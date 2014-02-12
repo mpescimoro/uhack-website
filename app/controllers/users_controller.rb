@@ -1,5 +1,15 @@
 class UsersController < Devise::RegistrationsController
 
+	def index
+		@super_users = SuperUser.all
+		@users = User.all
+		if params[:tag_id]
+			@selected_tag_id = params[:tag_id].to_i
+			@super_users = @super_users.joins(:tagships).where(tagships: {tag_id: @selected_tag_id})
+			@users = @users.joins(:tagships).where(tagships: {tag_id: @selected_tag_id})
+		end
+	end
+
 	def edit
 		render 'users/registrations/edit'
 	end

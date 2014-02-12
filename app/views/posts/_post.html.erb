@@ -26,17 +26,17 @@
 	
 	<% if creator_signed_in? %>
 	<div class='small-4 columns text-left'>
-		<%= link_to '#Modifica', edit_post_path(post) %>
+		<%= link_to '$Modifica', edit_post_path(post) %>
 	</div>
 	<div class='small-4 columns text-center'>
 		<% if post.published? %>
-			<%= link_to '#Spubblica', unpublish_post_path(post), data: { confirm: 'Sicuro di volerlo spubblicare?'} if post.published? %>
+			<%= link_to '$Nascondi', unpublish_post_path(post), data: { confirm: 'Sicuro di volerlo spubblicare?'} if post.published? %>
 		<% else %>
-			<%= link_to '#Pubblica', publish_post_path(post), data: { confirm: 'Sicuro di volerlo pubblicare?' } %>
+			<%= link_to '$Pubblica', publish_post_path(post), data: { confirm: 'Sicuro di volerlo pubblicare?' } %>
 		<% end %>
 	</div>
 	<div class='small-4 columns text-right'>
-		<%= link_to '#Elimina', post_path(post), method: :delete, data: { confirm: 'Sei sicuro?' } %>
+		<%= link_to '$Elimina', post_path(post), method: :delete, data: { confirm: 'Sei sicuro?' } %>
 	</div>
 	<% end %>
 

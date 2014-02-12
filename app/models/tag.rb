@@ -13,8 +13,16 @@ class Tag < ActiveRecord::Base
     self.posts.where.not(published_at: nil).count
   end
 
+  def tagships_count(type=nil)
+    type ? self.tagships.count : self.tagships.where(taggable_type: type).count
+  end
+
   def users_count
     self.users.count + self.super_users.count
+  end
+
+  def styled_name
+    "\##{self.name}"
   end
 
 end
