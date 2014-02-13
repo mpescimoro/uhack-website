@@ -3,7 +3,7 @@ module Taggable
   def self.included(includer)
     includer.class_eval do
       has_many :tagships,  as: :taggable, dependent: :destroy
-      has_many :tags, through: :tagships
+      has_many :tags, through: :tagships, dependent: :destroy
     end
   end
 

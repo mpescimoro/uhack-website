@@ -19,16 +19,14 @@ module TagsHelper
 			else
 				selected ? tags_path : tag_path(tag)
 			end
-		content_tag :span do
-			link_to tag_name(tag, selected)+" ", path, class: 'tag', style: style_for(tag, controller.to_s.singularize)
-		end
+		link_to tag_name(tag, selected)+" ", path, class: 'tag', style: style_for(tag, controller.to_s.singularize)
 	end
 
 	private
-	def style_for(tag, taggable_type=nil, scale=150)
-		total = taggable_type ? Tagship.where(taggable_type: taggable_type.capitalize).count : Tagship.count
+	def style_for(tag, taggable_type=nil, scale=300)
+		total_tagships = taggable_type ? Tagship.where(taggable_type: taggable_type.capitalize).count : Tagship.count
 		percentage = 100
-		percentage += scale * tag.tagships_count(taggable_type) / total
+		percentage += scale * tag.tagships_count(taggable_type) / total_tagships
 		"font-size: #{percentage}%;"
 	end
 

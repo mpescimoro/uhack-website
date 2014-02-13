@@ -21,8 +21,4 @@ class Tag < ActiveRecord::Base
     self.users.count + self.super_users.count
   end
 
-  def styled_name
-    "\##{self.name}"
-  end
-
 end

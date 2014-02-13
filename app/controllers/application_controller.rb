@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
   end
 
   def devise_path?
-    Devise.mappings.keys.inject(false) do |result, role|
+    (Devise.mappings.keys << "super").inject(false) do |result, role|
       result || request.fullpath.starts_with?("/#{role}")
     end
   end

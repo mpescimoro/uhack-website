@@ -33,7 +33,7 @@ Uhack::Application.routes.draw do
   #taggable :super_users
   devise_for :super_users, controllers: { registrations: 'users' }
   as :super_user do
-    get "super_user" => "devise/sessions#new"
+    get "super" => "devise/sessions#new"
     get 'super_users/edit' => 'users#edit', :as => 'edit_super_user_registration'
     get 'super_users/:id' => 'users#show_super', :as => 'super_user_profile'
     put 'super_users' => 'users#update', :as => 'super_user_registration'
