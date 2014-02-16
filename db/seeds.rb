@@ -8,9 +8,12 @@
 
 Admin.delete_all
 SuperUser.delete_all
+User.delete_all
+Guest.delete_all
 Post.delete_all
 Tag.delete_all
-#Tagship.delete_all
+Tagship.delete_all
+Comment.delete_all
 
 Admin.create(email: 'adm@uhack.com', password: 'koala666')
 SuperUser.create(email: 'giocaniato@gmail.com', username: 'gio', password: 'koala666')

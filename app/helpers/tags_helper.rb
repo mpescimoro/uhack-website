@@ -24,9 +24,10 @@ module TagsHelper
 
 	private
 	def style_for(tag, taggable_type=nil, scale=300)
-		total_tagships = taggable_type ? Tagship.where(taggable_type: taggable_type.capitalize).count : Tagship.count
+    taggable_type.capitalize! if taggable_type
+		total_tagships = taggable_type ? Tagship.where(taggable_type: taggable_type).count : Tagship.count
 		percentage = 100
-		percentage += scale * tag.tagships_count(taggable_type.capitalize) / total_tagships
+		percentage += scale * tag.tagships_count(taggable_type) / total_tagships
 		"font-size: #{percentage}%;"
 	end
 

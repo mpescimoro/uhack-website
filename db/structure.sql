@@ -144,11 +144,11 @@ CREATE TABLE posts (
     id integer NOT NULL,
     title character varying(255),
     body text,
-    published_at date,
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     creator_id integer,
-    creator_type character varying(255)
+    creator_type character varying(255),
+    published_at timestamp without time zone
 );
 
 
@@ -588,3 +588,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140204205720');
 INSERT INTO schema_migrations (version) VALUES ('20140208210516');
 
 INSERT INTO schema_migrations (version) VALUES ('20140209112315');
+
+INSERT INTO schema_migrations (version) VALUES ('20140216225024');

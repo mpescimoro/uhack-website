@@ -3,10 +3,14 @@
 		<%= image_tag @user.image_url %>
 	</div>
 	<div class='medium-8 columns'>
-		<h3>Utente: <%= @user.username %></h3>
+    <h3><b><%= @user.username %></b></h3>
 		<p><b>Email:</b> <%= @user.email %></p>
 		<p><b>Su di lui:</b><%= link_uris simple_format(@user.description) %></p>
 		<p><%= tags_for @user, :users %></p>
+    <h4 class="subheader">Attività recenti</h4>
+    <% @recent_activities.each do |activity| %>
+      <%= render 'recent_activity', activity: activity %>
+    <% end %>
 	</div>
 </div>
 

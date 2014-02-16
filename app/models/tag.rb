@@ -1,6 +1,6 @@
 class Tag < ActiveRecord::Base
 
-	has_many :tagships, dependent: :destroy
+	has_many :tagships
 	has_many :posts, through: :tagships, source: :taggable, source_type: 'Post'
   has_many :users, through: :tagships, source: :taggable, source_type: 'User'
   has_many :super_users, through: :tagships, source: :taggable, source_type: 'SuperUser'

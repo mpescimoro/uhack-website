@@ -2,7 +2,7 @@ module Taggable
 
   def self.included(includer)
     includer.class_eval do
-      has_many :tagships,  as: :taggable, dependent: :destroy
+      has_many :tagships, as: :taggable, dependent: :destroy
       has_many :tags, through: :tagships, dependent: :destroy
     end
   end
@@ -19,12 +19,12 @@ module Taggable
   end
 
   def update_tags(tag_names) #could be smarter and avoid destroying everything
-  	tagships = self.tagships
+  	old_tagships = self.tagships.to_a
   	self.tagships.delete_all
   	self.add_or_create_tags(tag_names)
 
-  	tagships.map(&:tag).each do |tag|
-  		tag.destroy if tag.posts.count == 0
+  	old_tagships.map(&:tag).each do |tag|
+  		tag.destroy if tag.tagships.count == 0
   	end
   end
 

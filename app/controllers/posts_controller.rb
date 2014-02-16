@@ -56,7 +56,7 @@ class PostsController < ApplicationController
   end
 
   def publish
-    @post.published_at = Time.now
+    @post.published_at = DateTime.now
 
     respond_to do |format|
       if @post.save
