@@ -1,8 +1,8 @@
 Uhack::Application.routes.draw do
 
 
-  def taggable(resource)
-    get "#{resource}/tag/:tag_id", to: "#{resource}#index", as: "#{resource}_with_tag"
+  def taggable(resource, opts={})
+    get "#{resource}/tag/:tag_id", to: "#{opts[:controller] || resource}#index", as: "#{resource}_with_tag"
   end
 
 
@@ -30,19 +30,19 @@ Uhack::Application.routes.draw do
     get "/admin" => "devise/sessions#new"
   end
 
-  #taggable :super_users
-  devise_for :super_users, controllers: { registrations: 'users' }
+  devise_for :super_users, controllers: { registrations: 'users/registrations' }
   as :super_user do
+    taggable :super_users, controller: 'users/registrations'
     get "super" => "devise/sessions#new"
-    get 'super_users/edit' => 'users#edit', :as => 'edit_super_user_registration'
-    get 'super_users/:id' => 'users#show_super', :as => 'super_user_profile'
-    put 'super_users' => 'users#update', :as => 'super_user_registration'
+    get 'super_users/edit' => 'users/registrations#edit', :as => 'edit_super_user_registration'
+    get 'super_users/:id' => 'users/registrations#show_super', :as => 'super_user_profile'
+    put 'super_users' => 'users/registrations#update', :as => 'super_user_registration'
   end
   
-  devise_for :users, controllers: { registrations: 'users' }
+  devise_for :users, controllers: { registrations: 'users/registrations' }
   as :user do
-    taggable :users
-    get 'users/:id' => 'users#show', :as => 'user_profile'
+    taggable :users, controller: 'users/registrations'
+    get 'users/:id' => 'users/registrations#show', :as => 'user_profile'
   end
 
   root "pages#index"

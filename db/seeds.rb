@@ -18,6 +18,9 @@ SuperUser.create(email: 'pes@ci.com', username: 'pesci', password: 'koala666')
 SuperUser.create(email: 'phi@ls.com', username: 'phil!', password: 'koala666')
 SuperUser.create(email: 'gue@st.com', username: 'guest', password: 'koala666')
 
-%w{Oggi\ ho\ fatto\ la\ cacca\ blu Molto\ interessante Hack\ Hack\ Hack}.each_with_index do |title, i|
-	Post.create(title: title, body: "<p>#{title * 120}</p>", published_at: Time.now - i.weeks, creator: SuperUser.all.to_a.shuffle.first)
+tag_names = %w{wolololo y_u_no_hack programming hardware stuff courses}
+%w{I\ gelati\ sono\ buoni Molto\ interessante Hack\ Hack\ Hack}.each_with_index do |title, i|
+	post = Post.create(title: title, body: "<p>#{title * 120}</p>", published_at: Time.now - i.weeks, creator: SuperUser.all.to_a.shuffle.first)
+  post.add_or_create_tags tag_names.shuffle.take(1 + rand(4))
+  post.save
 end

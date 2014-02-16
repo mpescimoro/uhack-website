@@ -14,7 +14,7 @@ class Tag < ActiveRecord::Base
   end
 
   def tagships_count(type=nil)
-    type ? self.tagships.count : self.tagships.where(taggable_type: type).count
+    type ? self.tagships.where(taggable_type: type).count : self.tagships.count
   end
 
   def users_count

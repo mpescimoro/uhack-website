@@ -1,4 +1,4 @@
-class UsersController < Devise::RegistrationsController
+class Users::RegistrationsController < Devise::RegistrationsController
 
 	def index
 		@super_users = SuperUser.all
@@ -28,7 +28,7 @@ class UsersController < Devise::RegistrationsController
 	private
 	def update_resource(resource, parameters)
 		logger.debug "%%%%%%%%%%TAGS= #{params[:tags]}\n"
-		resource.add_or_create_tags(parse_tag_names(params[:tags]))
+		resource.update_tags(parse_tag_names(params[:tags]))
 		super(resource, parameters)
 	end
 

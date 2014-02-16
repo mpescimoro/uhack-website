@@ -1,0 +1,74 @@
+" Press ? for help
+
+.. (up a dir)
+/Users/gio/Projects/uhack/
+▾ app/
+  ▸ assets/
+  ▸ controllers/
+  ▸ helpers/
+  ▸ mailers/
+  ▸ models/
+  ▾ views/
+    ▸ comments/
+    ▸ devise/
+    ▸ layouts/
+    ▸ pages/
+    ▸ posts/
+    ▾ super_users/
+      ▸ confirmations/
+      ▸ mailer/
+      ▸ passwords/
+      ▾ registrations/
+          edit.html.erb
+          new.html.erb
+      ▸ sessions/
+      ▸ shared/
+      ▸ unlocks/
+    ▸ tags/
+    ▾ users/
+      ▸ confirmations/
+      ▸ mailer/
+      ▸ passwords/
+      ▾ registrations/
+          edit.html.erb
+          new.html.erb
+      ▸ sessions/
+      ▸ shared/
+      ▸ unlocks/
+        index.html.erb
+        show.html.erb
+▸ bin/
+▾ config/
+  ▸ environments/
+  ▾ initializers/
+      backtrace_silencers.rb
+      devise.rb
+      filter_parameter_logging.rb
+      inflections.rb
+      mime_types.rb
+      profileable.rb
+      sanitizers.rb
+      secret_token.rb
+      session_store.rb
+      super_roles_helper.rb
+      taggable.rb
+      wrap_parameters.rb
+  ▸ locales/
+    application.rb
+    boot.rb
+    database.yml
+    environment.rb
+    routes.rb
+    tinymce.yml
+▸ db/
+▸ lib/
+▸ log/
+▸ public/
+▸ test/
+▸ tmp/
+▸ vendor/
+  config.ru
+  Gemfile
+  Gemfile.lock
+  Rakefile
+  README.rdoc
