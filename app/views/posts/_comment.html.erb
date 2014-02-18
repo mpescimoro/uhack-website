@@ -11,5 +11,7 @@
 				<%= link_to 'Modifica', edit_post_comment_path(@post, comment) %>
 			<% end %>
 		</p>
+
+    <%= render partial: 'comment', collection: comment.comments %>
 	</div>
 </div>

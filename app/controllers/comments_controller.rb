@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
   before_action :set_commentable, only: [:create, :edit, :update, :create_as_guest]
   before_action :authenticate_comment_commenter!, only: [:edit, :update, :destroy]
-  before_action :authenticate_commenter!, only: [:create]
+# before_action :authenticate_commenter!, only: [:create]
 
   # GET /comments
   # GET /comments.json
@@ -27,7 +27,13 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @commentable.comments.build comment_params.merge!({commenter: current_commenter})
+    if commenter_signed_in?
+      @commentable.comments.build comment_params.merge!({commenter: current_commenter})
+    else
+      guest = Guest.find_or_create(guest_params)
+      guest.save
+      @commentable.comments.build comment_params.merge!({commenter: guest})
+    end
 
     respond_to do |format|
       if @commentable.save
@@ -40,7 +46,7 @@ class CommentsController < ApplicationController
     end
   end
 
-  def create_as_guest
+  def create_as_guest # Non serve più
     guest = Guest.find_or_create(guest_params)
     guest.save
     @commentable.comments.build comment_params.merge!({commenter: guest})
@@ -90,10 +96,12 @@ class CommentsController < ApplicationController
 
     def set_commentable
       @commentable = if params[:post_id]
-        Post.find(params[:post_id])
-      else
-        raise Exception, "Couldn't find commentable, have you created new commentable models?"
-      end
+                       Post.find(params[:post_id])
+                     elsif params[:comment_id]
+                       Comment.find(params[:comment_id])
+                     else
+                       raise Exception, "Couldn't find commentable, have you created new commentable models?"
+                     end
     end
 
     def authenticate_comment_commenter!
