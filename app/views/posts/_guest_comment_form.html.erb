@@ -1,5 +1,5 @@
 
-<%= form_for([@post, @post.comments.build], url: post_guest_comment_url(@post)) do |f| %>
+<%= form_for([commentable, commentable.comments.build]) do |f| %>
   <%= f.fields_for :guest do |g| %>
       <div class="small-6 columns">
         <%= g.text_field :username, label: 'Nome ospite' %>
