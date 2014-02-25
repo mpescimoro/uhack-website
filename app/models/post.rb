@@ -18,4 +18,8 @@ class Post < ActiveRecord::Base
     self.published_at
   end
 
+  def commentable_root
+    self
+  end
+
 end

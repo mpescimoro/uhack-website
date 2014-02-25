@@ -4,23 +4,26 @@
 
 @import "main";
 
+$odd_color: #D0D0D0;
+$even_color: white;
+
 @mixin comment() {
 	padding-top: 0.5rem;
 
 	.comment_image {
 		padding-left: 0.5rem !important;
-		padding-right: 0px !important;
+		padding-right: 0.5rem !important;
     padding-bottom: 0.5rem !important;
 	}
 }
 
 .comment_even {
 	@include comment();
-	background-color: transparentize($main-light, 0.9);
+	background-color: $even_color;
 }
 
 .comment_odd {
 	@include comment();
-	background-color: transparentize($main-dark, 0.9);
+	background-color: $odd_color;
 }
 

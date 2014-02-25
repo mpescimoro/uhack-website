@@ -37,23 +37,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @commentable.save
-        format.html { redirect_to @commentable, notice: 'Commento creato' }
-        format.json { render action: 'show', status: :created, location: @comment }
-      else
-        format.html { redirect_to @commentable, alert: 'Qualcosa non va' }
-        format.json { render json: @commentable.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  def create_as_guest # Non serve più
-    guest = Guest.find_or_create(guest_params)
-    guest.save
-    @commentable.comments.build comment_params.merge!({commenter: guest})
-
-    respond_to do |format|
-      if @commentable.save
-        format.html { redirect_to @commentable, notice: 'Commento creato' }
+        format.html { redirect_to @commentable.commentable_root, notice: 'Commento creato' }
         format.json { render action: 'show', status: :created, location: @comment }
       else
         format.html { redirect_to @commentable, alert: 'Qualcosa non va' }
@@ -83,7 +67,7 @@ class CommentsController < ApplicationController
     @commentable = @comment.commentable
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to @commentable }
+      format.html { redirect_to @commentable.commentable_root }
       format.json { head :no_content }
     end
   end

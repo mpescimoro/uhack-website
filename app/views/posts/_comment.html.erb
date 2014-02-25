@@ -1,4 +1,4 @@
-<div class='row <%= cycle('comment_even', 'comment_odd') %>'>
+<div class='row <%= cycle(start, 'comment_even', 'comment_odd') %>'>
 	<div class='small-1 columns comment_image'>
 			<%= image_tag comment.commenter.image_url %>
 	</div>
@@ -12,6 +12,18 @@
 			<% end %>
 		</p>
 
-    <%= render partial: 'comment', collection: comment.comments %>
+
+    <% comment.comments.each do |subcomment| %>
+      <%= render partial: 'posts/comment', locals: { comment: subcomment, start: (['comment_even', 'comment_odd'] - [current_cycle]).first } %>
+    <% end %>
+    
+    <% if commenter_signed_in? %>
+      <% if @selected_comment == comment.id %>
+        <%= render 'comment_form', commentable: comment %>
+      <% else %>
+        <%= link_to 'Rispondi', post_path(@post, selected_comment: comment.id) %>
+      <% end %>
+    <% end %>
+
 	</div>
 </div>

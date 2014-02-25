@@ -23,6 +23,7 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @post.comments.order(:created_at)
+    @selected_comment = params[:selected_comment].to_i
   end
 
   # GET /posts/new
