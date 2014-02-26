@@ -22,7 +22,7 @@
       </div>
     <% end %>
 
-    <% comment.comments.each do |subcomment| %>
+    <% comment.ordered_comments.each do |subcomment| %>
       <%= render partial: 'posts/comment', locals: { comment: subcomment, start: (['comment_even', 'comment_odd'] - [current_cycle]).first } %>
     <% end %>
 
