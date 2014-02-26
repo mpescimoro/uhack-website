@@ -21,7 +21,7 @@ class Comment < ActiveRecord::Base
   end
 
   def ordered_comments
-    self.comments.order(:created_at)
+    self.comments.order(created_at: :desc)
   end
 
 end
