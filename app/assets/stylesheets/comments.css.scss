@@ -4,16 +4,18 @@
 
 @import "main";
 
-$odd_color: #D0D0D0;
-$even_color: white;
+$odd_color: transparent;
+$even_color: transparent;
 
 @mixin comment() {
-	padding-top: 0.5rem;
+	padding-top: 0.2rem;
+  border-left: 1px solid lightgrey;
+// border-top: 1px solid lightgrey;
 
 	.comment_image {
-		padding-left: 0.5rem !important;
-		padding-right: 0.5rem !important;
-    padding-bottom: 0.5rem !important;
+		padding-left: 0.2em !important;
+		padding-right: 0.2em !important;
+    padding-bottom: 0.2em !important;
 	}
 }
 

@@ -1,29 +1,37 @@
 <div class='row <%= cycle(start, 'comment_even', 'comment_odd') %>'>
+
 	<div class='small-1 columns comment_image'>
 			<%= image_tag comment.commenter.image_url %>
 	</div>
 	<div class='small-11 columns'>
 		<p>
-      <b><%= profile_link comment.commenter %></b> dice:</br>
+      <b><%= profile_link comment.commenter %></b> dice:
+      <% if commenter_signed_in? and @selected_comment != comment.id %>
+        <i><%= link_to "(rispondi)", post_path(@post, selected_comment: comment.id) %></i>
+      <% end %>
+      </br>
       <%= link_uris sanitize(comment.body), target: '_blank' %></br>
-			<% if comment_commenter_signed_in?(comment) %>
-				<%= link_to 'Elimina', post_comment_path(@post, comment), method: :delete %> | 
-				<%= link_to 'Modifica', edit_post_comment_path(@post, comment) %>
-			<% end %>
 		</p>
-
+  
+    <% if comment_commenter_signed_in?(comment) %>
+      <div class='row'>
+        <div class='small-12 columns text-right'>
+            <%= link_to 'Elimina', post_comment_path(@post, comment), method: :delete %> | 
+            <%= link_to 'Modifica', edit_post_comment_path(@post, comment) %>
+        </div>
+      </div>
+    <% end %>
 
     <% comment.comments.each do |subcomment| %>
       <%= render partial: 'posts/comment', locals: { comment: subcomment, start: (['comment_even', 'comment_odd'] - [current_cycle]).first } %>
     <% end %>
-    
-    <% if commenter_signed_in? %>
-      <% if @selected_comment == comment.id %>
-        <%= render 'comment_form', commentable: comment %>
-      <% else %>
-        <%= link_to 'Rispondi', post_path(@post, selected_comment: comment.id) %>
-      <% end %>
-    <% end %>
 
 	</div>
+
+  <% if commenter_signed_in? and @selected_comment == comment.id %>
+    <div class='small-12 columns'>
+      <%= render 'comment_form', commentable: comment %>
+    </div>
+  <% end %>
+
 </div>
