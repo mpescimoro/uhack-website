@@ -3,8 +3,11 @@
 	<div class='small-10 small-offset-1 columns'>
 		<br>
 		<%= render @post %>
+    
+    <% @comments.each do |comment| %>
+      <%= render partial: "comment", locals: { comment: comment } %>
+    <% end %>
 
-		<%= render partial: 'comment', collection: @comments %>
 		<fieldset>
 			<legend>Aggiungi un commento!</legend>
 			<% if commenter_signed_in? %>

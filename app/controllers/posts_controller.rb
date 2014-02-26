@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @unpublished_posts = Post.where(published_at: nil) if super_user_signed_in?
+    @unpublished_posts = Post.where(published_at: nil)
     @posts = Post.where.not(published_at: nil).order(published_at: :desc)
     if params[:tag_id]
       @selected_tag_id = params[:tag_id].to_i
@@ -15,6 +15,7 @@ class PostsController < ApplicationController
 
   def search
     @posts = Post.basic_search(params[:search])
+    @unpublished_posts = Post.where(published_at: nil).basic_search(params[:search])
     render :index
   end
 
@@ -23,6 +24,7 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @post.comments.order(:created_at)
+    @selected_comment = params[:selected_comment].to_i
   end
 
   # GET /posts/new

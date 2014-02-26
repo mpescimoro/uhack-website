@@ -44,12 +44,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def set_recent_activities
-    @comments = @user.comments.order(:created_at).take(5)
-    @posts = if @user.respond_to? :posts
-               @user.posts.where.not(published_at: nil).order(:published_at).take(5)
-             else
-               []
-             end
+    @comments = @user.comments.order(created_at: :desc).take(5)
+    @posts = @user.respond_to?(:posts) ? @user.posts.where.not(published_at: nil).order(:published_at).take(5) : []
+
     @recent_activities = (@comments + @posts).sort do |a, b|
       b.activity_date <=> a.activity_date
     end.take(5)
