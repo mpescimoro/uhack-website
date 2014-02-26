@@ -5,7 +5,7 @@
 		<%= render @post %>
     
     <% @comments.each do |comment| %>
-      <%= render partial: "comment", locals: { comment: comment, start: 'comment_even' } %>
+      <%= render partial: "comment", locals: { comment: comment } %>
     <% end %>
 
 		<fieldset>

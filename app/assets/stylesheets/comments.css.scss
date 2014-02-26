@@ -29,3 +29,8 @@ $even_color: transparent;
 	background-color: $odd_color;
 }
 
+.comment {
+	@include comment();
+	background-color: transparent;
+}
+

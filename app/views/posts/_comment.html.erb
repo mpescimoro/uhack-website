@@ -1,4 +1,4 @@
-<div class='row <%= cycle(start, 'comment_even', 'comment_odd') %>'>
+<div class='row comment'>
 
 	<div class='small-1 columns comment_image'>
 			<%= image_tag comment.commenter.image_url %>
@@ -23,7 +23,7 @@
     <% end %>
 
     <% comment.ordered_comments.each do |subcomment| %>
-      <%= render partial: 'posts/comment', locals: { comment: subcomment, start: (['comment_even', 'comment_odd'] - [current_cycle]).first } %>
+      <%= render partial: 'posts/comment', locals: { comment: subcomment } %>
     <% end %>
 
 	</div>
