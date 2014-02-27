@@ -19,10 +19,9 @@
     <%= render 'layouts/header' %>
     <%= display_flash_messages %>
 
-    <div class='row'>
       <%= yield %>
+
       <%= render 'layouts/footer' %>
-    </div>
 
     <%= javascript_include_tag "application" %>
 
