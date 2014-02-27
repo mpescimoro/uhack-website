@@ -1,35 +1,25 @@
 
-    <div class='contain-to-grid'>
-     
-      <!-- Top Bar -->
-      <nav class="top-bar" data-topbar data-options="is_hover: false">
-        
-        <!-- Large --> 
-        <section class="top-bar-section hide-for-small">
-          <ul class="left">
-            <%= render 'layouts/menu_items' %>
-          </ul>      
-          <ul class="right">
-            <%= render 'layouts/menu_search' %>
-            <%= render 'layouts/login_logout_links' %>
-          </ul>
-        </section>
-
-        <!-- Small -->
-        <section class="top-bar-section show-for-small">
-          <li class="has-dropdown">
-            <a href="#">Menu</a>
-            <ul class="dropdown">
-              <ul class="left">
-                <%= render 'layouts/menu_items' %>
-                <%= render 'layouts/login_logout_links' %>
-                <%= render 'layouts/menu_search' %>
-              </ul>      
-            </ul>
-          </li>
-        </section>
-
-      </nav>
-     <!-- End Top Bar -->
+<div class='contain-to-grid'>
  
-    </div>
+  <!-- Top Bar -->
+  <nav class="top-bar" data-topbar data-options="is_hover: false">
+   <ul class="title-area">
+    <li class="name"></li>
+    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+  </ul> 
+
+    <section class="top-bar-section">
+      <ul class="left">
+        <%= render 'layouts/menu_items' %>
+      </ul>      
+      <ul class="right">
+        <%= render 'layouts/menu_search' %>
+        <%= render 'layouts/login_logout_links' %>
+      </ul>
+    </section>
+
+
+  </nav>
+ <!-- End Top Bar -->
+
+</div>
