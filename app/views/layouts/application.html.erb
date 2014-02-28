@@ -6,11 +6,12 @@
 
     <title><%= content_for?(:title) ? yield(:title) : "µhack" %></title>
 
+    <%= csrf_meta_tags %>
     <%= stylesheet_link_tag "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
-    <%= csrf_meta_tags %>
     <%= javascript_include_tag "tinymce" %>
     <%= tinymce_assets %>
+
   </head>
 
   <body data-no-turbolink>
@@ -19,7 +20,6 @@
     <%= display_flash_messages %>
     <%= yield %>
     <%= render "layouts/footer" %>
-
     <%= javascript_include_tag "application" %>
 
   </body>
