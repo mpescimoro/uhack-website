@@ -3,8 +3,6 @@
   Commento a <%= link_to activity.commentable_root.title, activity.commentable_root %>: <i>"<%= sanitize(activity.body).truncate(25) %>"</i>
 <% when 'Post' %>
   Post sul blog: <%= link_to activity.title, activity %>
-<% else %>
-  nessuna delle altre <%= activity.class %>
 <% end %>
 
  (<%= activity.activity_date.strftime("%d/%m/%Y") %>)</br>
