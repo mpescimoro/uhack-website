@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   end
 
   def chi_siamo
+    @us = SuperUser.all
   end
 
   def partecipa
