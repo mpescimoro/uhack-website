@@ -1,38 +1,41 @@
-<h2>Modifica account</h2>
+<div class="row">
+  <div class="small-12 columns">
+    <h2>Modifica account</h2>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-  <!%= devise_error_messages! %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <!%= devise_error_messages! %>
 
-  <div><%= f.label :email %>
-  <%= f.email_field :email, :autofocus => true %></div>
+    <div><%= f.label :email %>
+      <%= f.email_field :email, :autofocus => true %></div>
+ 
+    <div><%= f.label :username %>
+      <%= f.text_field :username%></div>
 
-  <div><%= f.label :username %>
-  <%= f.text_field :username%></div>
+    <div><%= f.label "immagine profilo (url)" %>
+      <%= f.text_field :image_url%></div>
 
-  <div><%= f.label "immagine profilo (url)" %>
-  <%= f.text_field :image_url%></div>
+    <div><%= f.label :descrizione %>
+      <%= f.text_area :description%></div>
 
-  <div><%= f.label :descrizione %>
-  <%= f.text_area :description%></div>
+    <div><%= label_tag :tags %>
+      <%= text_area_tag :tags, resource.tagstring %></div>
 
-  <div><%= label_tag :tags %>
-  <%= text_area_tag :tags, resource.tagstring %></div>
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
 
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
+    <div><%= f.label :nuova_password %> <i>(lascia in bianco se non vuoi modificare la password)</i>
+      <%= f.password_field :password, :autocomplete => "off" %></div>
 
-  <div><%= f.label :nuova_password %> <i>(lascia in bianco se non vuoi modificare la password)</i>
-  <%= f.password_field :password, :autocomplete => "off" %></div>
+    <div><%= f.label :conferma_nuova_password %>
+      <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.label :conferma_nuova_password %>
-  <%= f.password_field :password_confirmation %></div>
+    <div><%= f.label :password_attuale %>
+      <%= f.password_field :current_password %></div>
 
-  <div><%= f.label :password_attuale %>
-  <%= f.password_field :current_password %></div>
+    <div><%= f.submit "Aggiorna profilo" %></div>
+    <% end %>
 
-  <div><%= f.submit "Aggiorna profilo" %></div>
-<% end %>
-
-
-Vuoi eliminare il tuo account? <%= link_to "Elimina", registration_path(resource_name), :data => { :confirm => "Sei sicuro?" }, :method => :delete, class: 'tiny button alert' %> :-(
+    Vuoi eliminare il tuo account? <%= link_to "Elimina", registration_path(resource_name), :data => { :confirm => "Sei sicuro?" }, :method => :delete, class: 'tiny button alert' %> :-(
+  </div>
+</div>
