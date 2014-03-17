@@ -1,5 +1,6 @@
 <div class="row">
   <div class='small-8 columns'>
+    <br>
     <% if params[:search] %>
       <h4><i>
         Hai cercato '<%= params[:search] %>', 
@@ -18,7 +19,7 @@
       </div>
       <hr/>
     <% end %>
-    <h2>Tags</h2>
+    <h2 class="subheader">Tags</h2>
     <%= tags_list @selected_tag_id %>
   </div>
 </div>
