@@ -15,7 +15,9 @@
         <%= render 'guest_comment_form', commentable: @post %>
   	  <% end %>
 	</fieldset>
+  </div
 
+  <div class="small-12 columns">
     <% @comments.each do |comment| %>
       <%= render partial: "comment", locals: { comment: comment } %>
     <% end %>

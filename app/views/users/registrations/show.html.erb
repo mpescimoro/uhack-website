@@ -14,6 +14,11 @@
       <%= render 'recent_activity', activity: activity %>
       <% end %>
     </div>
-  </div> 
-  <%= link_to 'Modifica account', eval("edit_#{@role}_registration_path") if eval("current_#{@role}") == @user %>
+  </div>
 </div>
+
+<div class="row">
+  <div class="small-12 columns">
+    <%= link_to 'Modifica account', eval("edit_#{@role}_registration_path") if eval("current_#{@role}") == @user %>
+  </div>
+</div> 
