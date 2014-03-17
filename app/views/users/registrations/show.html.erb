@@ -1,17 +1,15 @@
-<div class="row">
-    <br>
-	<div class="small-4 columns">
-		<%= image_tag @user.image_url %>
-	</div>
-	<div class='small-8 columns'>
-      <h3><b><%= @user.username %></b></h3>
-		<p><b>Email:</b> <%= @user.email %></p>
-		<p><b>Su di lui:</b><%= link_uris simple_format(@user.description) %></p>
-		<p><%= tags_for @user, :users %></p>
-      <h4 class="subheader">Attività recenti</h4>
-      <% @recent_activities.each do |activity| %>
-        <%= render 'recent_activity', activity: activity %>
-      <% end %>
-	</div>
-    <%= link_to 'Modifica account', eval("edit_#{@role}_registration_path") if eval("current_#{@role}") == @user %>
+<br>
+<div class="small-4 columns">
+  <%= image_tag @user.image_url %>
 </div>
+<div class='small-8 columns'>
+  <h3><b><%= @user.username %></b></h3>	
+  <p><b>Email:</b> <%= @user.email %></p>
+  <p><b>Su di lui:</b><%= link_uris simple_format(@user.description) %></p>
+  <p><%= tags_for @user, :users %></p>
+  <h4 class="subheader">Attività recenti</h4>
+  <% @recent_activities.each do |activity| %>
+  <%= render 'recent_activity', activity: activity %>
+  <% end %>
+</div>
+<%= link_to 'Modifica account', eval("edit_#{@role}_registration_path") if eval("current_#{@role}") == @user %>
