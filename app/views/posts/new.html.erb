@@ -1,10 +1,13 @@
-<h1>Nuovo post</h1>
+<div class="row">
+  <div class="small-12 columns"> 
+    <h1>Nuovo post</h1>
 
-<%= render 'form' %>
-
-<% if @plain_text %>
-	<%= link_to 'Modalità normale', new_post_path(@post), class: 'button small radius' %>
-<% else %>
-	<%= link_to 'Modalità plain text', new_post_path(@post, plain_text: true), class: 'button small radius' %>
-	(se preferisci scriverti il post in html)
-<% end %>
+    <%= render 'form' %>
+    <% if @plain_text %>
+      <%= link_to 'Modalità normale', new_post_path(@post), class: 'button small radius' %>
+    <% else %>
+	  <%= link_to 'Modalità plain text', new_post_path(@post, plain_text: true), class: 'button small radius' %>
+	  (se preferisci scriverti il post in html)
+    <% end %>
+  </div>
+</div>
