@@ -1,4 +1,4 @@
 <% case news.class.to_s
   when 'Post' %>
-  <%= link_to news.title.truncate(25), post_path(news) %>
+  <p><%= link_to news.title.truncate(25), post_path(news) %></p>
 <% end %>
