@@ -6,6 +6,7 @@
       <%= f.text_field :title %>
     </div>
   </div>
+
   <div class="row">
     <div class="small-8 columns">
       <%= f.label :testo %>
@@ -16,11 +17,14 @@
       <%= text_area_tag :tag_names, @post.tagstring %>
     </div>
   </div>
-
   
-  <div class="actions">
-    <%= f.submit @submit_text %>
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="actions">
+      <%= f.submit @submit_text %>
+      </div>
+    <% end %>
+    </div>
   </div>
-<% end %>
 
 <%= tinymce unless @plain_text %>

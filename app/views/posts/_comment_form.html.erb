@@ -1,9 +1,9 @@
 <%= form_for([commentable, commentable.comments.build]) do |f| %>
 
-  <div class="medium-9 columns">
+  <div class="small-9 columns">
     <%= f.text_area :body, label: false %>
   </div>
-  <div class="medium-3 columns">
+  <div class="small-3 columns">
     <%= f.submit 'Commenta' %>
   </div>
 <% end %>
