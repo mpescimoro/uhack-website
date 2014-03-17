@@ -1,34 +1,35 @@
-<div class='small-12 columns'>
-
-  <div class='row'>
-    <br>
-    <div class='small-8 columns'>
-      <% if params[:search] %>
-        <h4><i>
-          Hai cercato '<%= params[:search] %>', 
-          la ricerca ha prodotto <%= @posts.count %> risultati
-        </i></h4>
-      <% end %>
-    </div>
-  </div>
-  <%= render @unpublished_posts if super_user_signed_in? %>
-  <%= render @posts %>
-</div>
-
-<div class='small-12 columns'>
-  <% if creator_signed_in? %>
-    <div class='row collapse'>
-      <div class='small-8 columns'>
-        <br>
-        <%= link_to 'Nuovo post', new_post_path, class: 'radius button' %>
+<div class="row">
+  <div class='small-8 columns'>
+    <div class='row'>
+      <br>
+      <div class='small-12 columns'>
+        <% if params[:search] %>
+          <h4><i>
+            Hai cercato '<%= params[:search] %>', 
+            la ricerca ha prodotto <%= @posts.count %> risultati
+          </i></h4>
+        <% end %>
       </div>
     </div>
-    <hr>
-  <% end %>
-  <div class='row'>
-    <div class='small-4 columns'>
-      <h2 class='subheader'>Tags</h2>
-      <%= tags_list @selected_tag_id %>
+    <%= render @unpublished_posts if super_user_signed_in? %>
+    <%= render @posts %>
+  </div>
+
+  <div class='small-12 columns'>
+    <% if creator_signed_in? %>
+      <div class='row collapse'>
+        <div class='small-8 columns'>
+          <br>
+          <%= link_to 'Nuovo post', new_post_path, class: 'radius button' %>
+        </div>
+      </div>
+      <hr/>
+    <% end %>
+    <div class='row'>
+      <div class='small-4 columns'>
+        <h2 class='subheader'>Tags</h2>
+        <%= tags_list @selected_tag_id %>
+      </div>
     </div>
   </div>
 </div>
