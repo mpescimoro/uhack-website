@@ -1,10 +1,12 @@
 <div class='row comment'>
+  <div class="small-12 columns">
 
 	<div class='small-1 columns comment_image'>
 			<%= image_tag comment.commenter.image_url %>
 	</div>
+
 	<div class='small-11 columns'>
-		<p>
+	  <p>
       <b><%= profile_link comment.commenter %></b> dice:
       <% if commenter_signed_in? and @selected_comment != comment.id %>
         <i><%= link_to "(rispondi)", post_path(@post, selected_comment: comment.id) %></i>
@@ -33,5 +35,5 @@
       <%= render 'comment_form', commentable: comment %>
     </div>
   <% end %>
-
+  </div>
 </div>
