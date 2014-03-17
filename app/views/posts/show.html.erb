@@ -2,7 +2,9 @@
   <div class="small-12 columns">
 	<%= render @post %>
   </div>
+</div>
 
+<div class='row'>
   <div class="small-12 columns">
     <fieldset>
 	  <legend>Aggiungi un commento!</legend>
@@ -12,9 +14,6 @@
         <%= render 'guest_comment_form', commentable: @post %>
   	  <% end %>
 	</fieldset>
-  </div>
-
-  <div class="small-12 columns">
     <% @comments.each do |comment| %>
       <%= render partial: "comment", locals: { comment: comment } %>
     <% end %>
