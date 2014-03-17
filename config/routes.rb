@@ -45,7 +45,7 @@ Uhack::Application.routes.draw do
   devise_for :users, controllers: { registrations: 'users/registrations' }
   as :user do
     taggable :users, controller: 'users/registrations'
-    get 'users/:id' => 'users/registrations#show', :as => 'user_profile'
+    get 'profiles/:id' => 'users/registrations#show', :as => 'user_profile'
   end
 
   root "pages#index"

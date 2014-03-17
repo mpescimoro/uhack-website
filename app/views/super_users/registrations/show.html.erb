@@ -4,7 +4,7 @@
 	<div class="small-4 columns">
 		<%= image_tag @user.image_url %>
 	</div>
-	<div class='small-8 columns">
+	<div class='small-8 columns'>
       <h3><b><%= @user.username %></b></h3>
 		<p><b>Email:</b> <%= @user.email %></p>
 		<p><b>Su di lui:</b><%= link_uris simple_format(@user.description) %></p>
