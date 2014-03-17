@@ -1,7 +1,11 @@
 
 <li class='text-center'>
-  <%= link_to image_tag(super_user.image_url), super_user_profile_path(super_user) %>
-  <a href="mailto:<%= super_user.email %>">
-    <%= super_user.username %>
-  </a>
+  <div class="small-12">
+    <%= link_to image_tag(super_user.image_url), super_user_profile_path(super_user) %>
+  </div>
+  <div class="small-12">
+    <a href="mailto:<%= super_user.email %>">
+      <%= super_user.username %>
+    </a>
+  </div>
 </li>

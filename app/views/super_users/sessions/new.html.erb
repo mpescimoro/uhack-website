@@ -1,20 +1,20 @@
 <div class="row">
   <div class="small-12 columns">
-    <h2>Login associato</h2>
+    <h2>Accedi come associato</h2>
 
-    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), auto_labels: false) do |f| %>
-    <div><%= f.label :email_o_nome_utente %><br>
-      <%= f.text_field :email, :autofocus => true %></div>
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    
+    <div><%= f.label :email %><br>
+      <%= f.email_field :email, :autofocus => true %></div>
 
     <div><%= f.label :password %><br>
       <%= f.password_field :password %></div>
 
     <% if devise_mapping.rememberable? -%>
       <div><%= f.check_box :remember_me, label: 'Remember me' %></div>
+  
     <% end -%>
-
     <div><%= f.submit "Accedi" %></div>
     <% end %>
-    <%= render "users/shared/links" %>
   </div>
 </div>
