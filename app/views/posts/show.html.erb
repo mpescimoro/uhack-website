@@ -1,6 +1,5 @@
 <div class="row">
   <div class="small-12 columns">
-	<br>
 	<%= render @post %>
   </div>
 </div>
@@ -15,7 +14,7 @@
         <%= render 'guest_comment_form', commentable: @post %>
   	  <% end %>
 	</fieldset>
-  </div
+  </div>
 
   <div class="small-12 columns">
     <% @comments.each do |comment| %>
