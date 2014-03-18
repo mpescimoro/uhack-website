@@ -4,7 +4,7 @@ class Admin < ActiveRecord::Base
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :posts, as: :creator
+  has_many :posts, as: :creator, dependent: :destroy
 
   def username
   	'admin'
