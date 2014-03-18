@@ -1,5 +1,4 @@
 
-
 class SuperUser::ParameterSanitizer < Devise::ParameterSanitizer
 
 	def sign_in
