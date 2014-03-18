@@ -9,10 +9,16 @@
       <%= f.email_field :email, :autofocus => true %></div>
  
     <div><%= f.label :username %>
-      <%= f.text_field :username%></div>
+    <%= f.text_field :username%></div>
+
+    <div><%= f.label :nome %>
+    <%= f.text_field :name%></div>
+
+    <div><%= f.label :cognome %>
+    <%= f.text_field :surname%></div>
 
     <div><%= f.label "immagine profilo (url)" %>
-      <%= f.text_field :image_url%></div>
+    <%= f.text_field :image_url%></div>
 
     <div><%= f.label :descrizione %>
       <%= f.text_area :description%></div>
