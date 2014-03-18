@@ -8,7 +8,7 @@
 	<div class='small-8 columns'>
     <h3><b><%= @user.profile_title %></b></h3>
 		<p><b>Email:</b> <%= @user.email %></p>
-		<p><b>Su di lui:</b><%= link_uris simple_format(@user.description) %></p>
+		<p><b>Informazioni:</b><%= link_uris simple_format(@user.description) %></p>
 		<p><%= tags_for @user, :users %></p>
       <h4 class="subheader">Attività recenti</h4>
       <% @recent_activities.each do |activity| %>
