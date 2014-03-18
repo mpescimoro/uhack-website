@@ -6,7 +6,7 @@
     <%= link_to 'Modifica account', eval("edit_#{@role}_registration_path") if eval("current_#{@role}") == @user %>
 	</div>
 	<div class='small-8 columns'>
-      <h3><b><%= @user.username %></b></h3>
+    <h3><b><%= @user.profile_title %></b></h3>
 		<p><b>Email:</b> <%= @user.email %></p>
 		<p><b>Su di lui:</b><%= link_uris simple_format(@user.description) %></p>
 		<p><%= tags_for @user, :users %></p>

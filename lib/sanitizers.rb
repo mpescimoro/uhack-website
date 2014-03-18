@@ -7,7 +7,7 @@ class SuperUser::ParameterSanitizer < Devise::ParameterSanitizer
 	end
 
 	def account_update
-		default_params.permit(:email, :username, :image_url, :description, :password, :current_password)
+		default_params.permit(:email, :username, :name, :surname, :image_url, :description, :password, :current_password)
 	end
 
 end
@@ -23,7 +23,7 @@ class User::ParameterSanitizer < Devise::ParameterSanitizer
 	end
 
 	def account_update
-		default_params.permit(:email, :username, :image_url, :description, :password, :current_password)
+		default_params.permit(:email, :username, :name, :surname, :image_url, :description, :password, :current_password)
 	end
 
 end

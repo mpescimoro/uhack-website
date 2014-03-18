@@ -200,7 +200,9 @@ CREATE TABLE super_users (
     created_at timestamp without time zone,
     updated_at timestamp without time zone,
     description text,
-    image_url character varying(255)
+    image_url character varying(255),
+    name character varying(255),
+    surname character varying(255)
 );
 
 
@@ -307,7 +309,9 @@ CREATE TABLE users (
     updated_at timestamp without time zone,
     username character varying(255),
     description text,
-    image_url character varying(255)
+    image_url character varying(255),
+    name character varying(255),
+    surname character varying(255)
 );
 
 
@@ -590,3 +594,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140208210516');
 INSERT INTO schema_migrations (version) VALUES ('20140209112315');
 
 INSERT INTO schema_migrations (version) VALUES ('20140216225024');
+
+INSERT INTO schema_migrations (version) VALUES ('20140318111135');
