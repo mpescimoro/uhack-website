@@ -1,6 +1,6 @@
 class Guest < ActiveRecord::Base
 
-	has_many :comments, as: :commenter
+	has_many :comments, as: :commenter, dependent: :destroy
 
   validates :username, presence: { message: 'campo obbligatorio' }
   validates :email, presence: { message: 'campo obbligatorio' }

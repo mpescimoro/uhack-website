@@ -3,6 +3,7 @@
     <br>
 	<div class="small-4 columns">
 		<%= image_tag @user.image_url %>
+    <%= link_to 'Modifica account', eval("edit_#{@role}_registration_path") if eval("current_#{@role}") == @user %>
 	</div>
 	<div class='small-8 columns'>
       <h3><b><%= @user.username %></b></h3>
@@ -14,6 +15,5 @@
         <%= render 'recent_activity', activity: activity %>
       <% end %>
 	</div>
-    <%= link_to 'Modifica account', eval("edit_#{@role}_registration_path") if eval("current_#{@role}") == @user %>
   </div>
 </div>
