@@ -27,7 +27,7 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
-gem 'foundation-rails', git: 'git://github.com/zurb/foundation-rails'
+gem 'foundation-rails'
 gem 'foundation_rails_helper', git: 'git://github.com/dropletzz/foundation_rails_helper', branch: 'auto_labels_option'
 
 gem 'devise'
@@ -37,6 +37,8 @@ gem 'textacular'
 gem 'tinymce-rails'
 
 gem 'rails_12factor'
+
+gem 'truncate_html'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

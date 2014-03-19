@@ -20,7 +20,7 @@
 
   <div class='row collapse'>
     <div class='small-12 columns body'>
-      <%= post.body.html_safe %>
+      <%= truncate_html(post.body.html_safe, length: 1500, omission: "...#{link_to '<i>(continua)</i>'.html_safe, post_path(post)}") %>
     </div>
 
     <div class='small-12 columns tagged'>
