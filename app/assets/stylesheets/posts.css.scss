@@ -5,9 +5,11 @@
 @import "main";
 @import "tags";
 @import "comments";
+@import "foundation/components/buttons";
 
 $title-color: $main-light;
 $text-color: $main-dark;
+$actions-color: red;
 
 
 
@@ -37,8 +39,12 @@ $text-color: $main-dark;
 		padding-bottom: 1em;
 	}
 	.actions {
-		font-style: italic;
-		font-weight: bold;
-	}
+    a {
+      color: $actions-color;
+			&:hover {
+				color: darken($actions-color, 10%);
+			}
+    }
+  }
 
 }
