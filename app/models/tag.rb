@@ -21,4 +21,8 @@ class Tag < ActiveRecord::Base
     self.users.count + self.super_users.count
   end
 
+  def has_any?(taggable_type)
+    self.send(taggable_type).count > 0
+  end
+
 end

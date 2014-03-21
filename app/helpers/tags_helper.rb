@@ -22,6 +22,14 @@ module TagsHelper
 		link_to tag_name(tag, selected)+" ", path, class: 'tag', style: style_for(tag, controller.to_s.singularize)
 	end
 
+	def tags_list(selected_tag_id=0, controller=params[:controller])
+		html=""
+		Tag.all.each do |tag|
+			html += tag_list_elem(tag, selected_tag_id) if tag.has_any? controller
+		end
+		html.html_safe
+	end
+
 	private
 	def style_for(tag, taggable_type=nil, scale=300)
     taggable_type.capitalize! if taggable_type

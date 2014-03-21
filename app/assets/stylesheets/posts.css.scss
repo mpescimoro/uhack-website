@@ -14,7 +14,7 @@ $actions-color: red;
 
 
 .post_panel {
-	padding-bottom: 2rem;
+	padding-top: 2rem;
 	
 	.title  {
 		a {
@@ -28,6 +28,7 @@ $actions-color: red;
 		color: lighten($text-color, 40%);
 		font-size: 80%;
 		font-style: italic;
+    margin-bottom: 0.5em;
 	}
 	.body {
 		color: $text-color;

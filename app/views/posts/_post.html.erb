@@ -16,12 +16,12 @@
     </div>
   </div>
 
-  <hr/>
-
   <div class='row collapse'>
     <div class='small-12 columns body'>
       <%= truncate_html(post.body.html_safe, length: 1000, omission: "...#{link_to '<i>(continua)</i>'.html_safe, post_path(post)}") %>
     </div>
+
+    <hr/>
 
     <div class='small-12 columns tagged'>
       Tagged: <%= tags_for post, :posts %>
