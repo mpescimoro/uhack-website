@@ -4,7 +4,7 @@ class PagesController < ApplicationController
   end
 
   def chi_siamo
-    @us = SuperUser.all
+    @us = SuperUser.all.shuffle.take 10
   end
 
   def partecipa
