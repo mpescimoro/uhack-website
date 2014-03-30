@@ -24,4 +24,8 @@ class Comment < ActiveRecord::Base
     self.comments.order :created_at
   end
 
+  def id_html
+    "#{self.class}#{self.id}"
+  end
+
 end
