@@ -25,7 +25,7 @@
 
     <% comment.ordered_comments.each do |subcomment| %>
       <%= content_tag :div, class: 'row comment', id: subcomment.id_html do %>
-        <%= render partial: 'posts/comment', locals: { comment: subcomment } %>
+        <%= render partial: 'posts/comment', locals: { comment: subcomment} %>
       <% end %>
     <% end %>
 
@@ -33,7 +33,7 @@
 
   <% if commenter_signed_in? and @selected_comment == comment %>
     <div class='small-12 columns'>
-      <%= render 'comment_form', commentable: comment %>
+      <%= render 'comment_form', commentable: comment, remote: true %>
     </div>
   <% end %>
 

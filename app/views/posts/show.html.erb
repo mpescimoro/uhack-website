@@ -56,7 +56,7 @@
     <fieldset>
 	  <legend>Aggiungi un commento!</legend>
 	  <% if commenter_signed_in? %>
-	    <%= render 'comment_form', commentable: @post %>
+	    <%= render 'comment_form', commentable: @post, remote: false %>
 	  <% else %>
         <%= render 'guest_comment_form', commentable: @post %>
   	  <% end %>
