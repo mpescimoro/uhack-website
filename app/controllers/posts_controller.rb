@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @post.comments.order(:created_at)
-    @selected_comment = params[:selected_comment] ? Comment.find(params[:selected_comment]) : nil
+    @selected_comment = params[:selected_comment_id] ? Comment.find(params[:selected_comment_id]) : nil
     respond_to do |format|
       format.html
       format.js

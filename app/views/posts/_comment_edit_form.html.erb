@@ -1,0 +1,10 @@
+
+<%= form_for([comment.commentable, comment], remote: true) do |f| %>
+
+  <div class="small-9 columns">
+    <%= f.text_area :body, label: false %>
+  </div>
+  <div class="small-3 columns">
+    <%= f.submit 'Modifica' %>
+  </div>
+<% end %>

@@ -8,17 +8,21 @@
     <p>
       <b><%= profile_link comment.commenter %></b> dice:
       <% if commenter_signed_in? and @selected_comment != comment %>
-        <i><%= link_to "(rispondi)", post_path(@post, selected_comment: comment.id), remote: true %></i>
+        <i><%= link_to "(rispondi)", post_path(@post, selected_comment_id: comment.id), remote: true %></i>
       <% end %>
       </br>
-      <%= link_uris sanitize(comment.body), target: '_blank' %></br>
+      <% if @editing_comment == comment %>
+        <%= render 'posts/comment_edit_form', comment: comment %>
+      <% else %>
+        <%= link_uris sanitize(comment.body), target: '_blank' %></br>
+      <% end %>
     </p>
-  
+
     <% if comment_commenter_signed_in?(comment) %>
       <div class='row'>
         <div class='small-12 columns text-right'>
             <%= link_to 'Elimina', post_comment_path(@post, comment), method: :delete %> | 
-            <%= link_to 'Modifica', edit_post_comment_path(@post, comment) %>
+            <%= link_to 'Modifica', edit_post_comment_path(@post, comment), remote: true %>
         </div>
       </div>
     <% end %>
@@ -33,7 +37,7 @@
 
   <% if commenter_signed_in? and @selected_comment == comment %>
     <div class='small-12 columns'>
-      <%= render 'comment_form', commentable: comment, remote: true %>
+      <%= render 'posts/comment_form', commentable: comment, remote: true %>
     </div>
   <% end %>
 
