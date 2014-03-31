@@ -16,7 +16,7 @@ Uhack::Application.routes.draw do
     resources :comments
   end
 
-  resources :comments, only: [] do
+  resources :comments do
     resources :comments
   end
 

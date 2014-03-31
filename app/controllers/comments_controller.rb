@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_action :set_commentable, only: [:create, :edit, :update, :create_as_guest]
+  before_action :set_commentable, only: [:create, :edit, :update]
   before_action :authenticate_comment_commenter!, only: [:edit, :update, :destroy]
 # before_action :authenticate_commenter!, only: [:create]
 
@@ -38,10 +38,10 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @commentable.save
         format.html { redirect_to @commentable.commentable_root, notice: 'Commento creato' }
-        format.json { render action: 'show', status: :created, location: @comment }
+        format.js { set_root }
       else
         format.html { redirect_to @commentable, alert: 'Qualcosa non va' }
-        format.json { render json: @commentable.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -86,6 +86,13 @@ class CommentsController < ApplicationController
                      else
                        raise Exception, "Couldn't find commentable, have you created new commentable models?"
                      end
+    end
+
+    def set_root
+      case @commentable.commentable_root.class.to_s
+      when 'Post'
+        @post = @commentable.commentable_root
+      end
     end
 
     def authenticate_comment_commenter!
