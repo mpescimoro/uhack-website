@@ -15,26 +15,28 @@ $actions-color: red;
 
 .post_panel {
 	padding-top: 2rem;
-	
-	.title  {
-		a {
-			color: $title-color;
-			&:hover {
-				color: darken($title-color, 10%);
-			}
-		}
-	}
-	.info {
-		color: lighten($text-color, 40%);
-		font-size: 80%;
-		font-style: italic;
-    margin-bottom: 0.5em;
-	}
-	.body {
-		color: $text-color;
-		text-align: justify;
-		font-size: 100%;
-	}
+	.post {
+    .title  {
+      a {
+        color: $title-color;
+        &:hover {
+          color: darken($title-color, 10%);
+        }
+      }
+    }
+    .info {
+      color: lighten($text-color, 40%);
+      font-size: 80%;
+      font-style: italic;
+      margin-bottom: 0.5em;
+    }
+    .body {
+      color: $text-color;
+      text-align: justify;
+      font-size: 100%;
+    }
+  }
+
 	.tagged {
 		font-weight: bold;
 		padding-bottom: 1em;
@@ -48,4 +50,10 @@ $actions-color: red;
     }
   }
 
+}
+
+.unpublished {
+  .post {
+    background-color: #D6D6D6;
+  }
 }

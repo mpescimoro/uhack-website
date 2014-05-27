@@ -1,5 +1,6 @@
-<div class='post_panel'>
-  <div class='row collapse'>
+ <%= content_tag :div, class: 'post_panel' + (post.published? ? '' : ' unpublished')  do %>
+
+  <div class='row collapse post'>
     <div class='small-12 columns title'>
       <h3><%= link_to post.title.html_safe, post_path(post) %></h3>
     </div>
@@ -14,12 +15,13 @@
     <div class='small-6 columns text-right info'>
       autore: <%= profile_link post.creator %>
     </div>
-  </div>
 
-  <div class='row collapse'>
     <div class='small-12 columns body'>
       <%= truncate_html(post.body.html_safe, length: 1000, omission: "...#{link_to '<i>(continua)</i>'.html_safe, post_path(post)}") %>
     </div>
+  </div>
+
+  <div class='row collapse'>
 
     <hr/>
 
@@ -45,4 +47,4 @@
       </div>
     <% end %>
   </div>
-</div>
+<% end %>
