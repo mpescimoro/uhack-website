@@ -40,6 +40,8 @@ gem 'rails_12factor'
 
 gem 'truncate_html'
 
+gem 'recaptcha', require: "recaptcha/rails"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

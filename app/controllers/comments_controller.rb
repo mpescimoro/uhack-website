@@ -29,12 +29,16 @@ class CommentsController < ApplicationController
     end
 
     respond_to do |format|
-      if @commentable.save
-        format.html { redirect_to @commentable.commentable_root, notice: 'Commento creato' }
-        format.js { set_root }
+      if verify_recaptcha
+        if @commentable.save
+          format.html { redirect_to @commentable.commentable_root, notice: 'Commento creato' }
+          format.js { set_root }
+        else
+          format.html { redirect_to @commentable, alert: 'Qualcosa non va' }
+          format.js
+        end
       else
-        format.html { redirect_to @commentable, alert: 'Qualcosa non va' }
-        format.js
+        format.html { render @commentable.commentable_root, alert: 'Recaptcha sbagliato!' }
       end
     end
   end

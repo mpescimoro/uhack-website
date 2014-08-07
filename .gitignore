@@ -25,3 +25,5 @@ config/secrets.yml
 .rvmrc
 
 **/.DS_Store
+
+.env
