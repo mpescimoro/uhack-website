@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
           format.js
         end
       else
-        format.html { render @commentable.commentable_root, alert: 'Recaptcha sbagliato!' }
+        format.html { redirect_to @commentable.commentable_root, alert: 'Recaptcha sbagliato!' }
       end
     end
   end
