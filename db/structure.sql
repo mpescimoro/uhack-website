@@ -311,7 +311,8 @@ CREATE TABLE users (
     description text,
     image_url character varying(255),
     name character varying(255),
-    surname character varying(255)
+    surname character varying(255),
+    member boolean
 );
 
 
@@ -596,3 +597,9 @@ INSERT INTO schema_migrations (version) VALUES ('20140209112315');
 INSERT INTO schema_migrations (version) VALUES ('20140216225024');
 
 INSERT INTO schema_migrations (version) VALUES ('20140318111135');
+
+INSERT INTO schema_migrations (version) VALUES ('20140614125811');
+
+INSERT INTO schema_migrations (version) VALUES ('20140614132933');
+
+INSERT INTO schema_migrations (version) VALUES ('20140808123011');

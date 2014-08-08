@@ -38,6 +38,7 @@ class CommentsController < ApplicationController
           format.js
         end
       else
+        flash.clear
         format.html { redirect_to @commentable.commentable_root, alert: 'Recaptcha sbagliato!' }
       end
     end
